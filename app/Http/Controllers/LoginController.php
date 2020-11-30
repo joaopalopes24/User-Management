@@ -20,9 +20,15 @@ class LoginController extends Controller
             'password' => $request->password
         ];
 
-        Auth::attempt($credentials);
+        if(Auth::attempt($credentials)){
 
-        return redirect()->route('home.index');
+            return redirect()->route('home.index');
+
+        } else {
+
+            return redirect()->route('login.index');
+
+        }        
     }
 
     public function recover(){
@@ -34,6 +40,6 @@ class LoginController extends Controller
 
         Auth::logout();
 
-        return redirect()->route('home.index');
+        return redirect()->route('login.index');
     }
 }

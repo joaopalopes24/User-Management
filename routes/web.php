@@ -31,6 +31,8 @@ Route::get('fale_conosco', [SiteController::class, 'fale_conosco'])->name('fale_
 
 Route::get('application/login', [LoginController::class, 'index'])->name('login.index');
 
+Route::get('application/login/logout', [LoginController::class, 'logout'])->name('login.logout');
+
 Route::post('application/login', [LoginController::class, 'login'])->name('login.login');
 
 Route::get('application/login/recover', [LoginController::class, 'recover'])->name('login.recover');

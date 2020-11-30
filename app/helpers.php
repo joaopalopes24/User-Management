@@ -2,12 +2,23 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route as FacadesRoute;
 
-function authetication_helper(){
+class Helpers
+{
+    public static function authetication_helper()
+    {
+        $route = FacadesRoute::current()->getName();
 
-    $route = FacadesRoute::current()->getName();
+        if (Auth::check()) {
 
-    return $route;
+            return TRUE;
+
+        } else {
+
+            redirect()->route('login.index');
+
+        }
+    }
 }
-

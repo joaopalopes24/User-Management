@@ -8,7 +8,7 @@
       <h3><i class="fa fa-warning text-yellow"></i> Oops! Algo deu errado.</h3>
       <p>
         Vamos trabalhar para consertar isso imediatamente. 
-        Enquanto isso, você pode retornar ao <a href="{{route('login')}}">painel inicial</a> ou para a <a href="javascript:history.go(-1)">página anterior</a>.
+        Enquanto isso, você pode retornar ao <a href="{{route('login.index')}}">painel inicial</a> ou para a <a href="javascript:history.go(-1)">página anterior</a>.
       </p>
     </div>
   </div>

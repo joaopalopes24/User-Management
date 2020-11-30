@@ -63,7 +63,7 @@
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Logout</a>
+                    <a href="{{route('login.logout')}}" class="btn btn-default btn-flat">Logout</a>
                   </div>
                 </li>
               </ul>
