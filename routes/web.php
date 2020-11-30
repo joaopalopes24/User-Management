@@ -7,7 +7,6 @@ use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Auth::routes();
 
 Route::get('/', [SiteController::class, 'index'])->name('/');
 
@@ -31,13 +29,13 @@ Route::get('fale_conosco', [SiteController::class, 'fale_conosco'])->name('fale_
 
 Route::get('application/login', [LoginController::class, 'index'])->name('login.index');
 
-Route::get('application/login/logout', [LoginController::class, 'logout'])->name('login.logout');
-
 Route::post('application/login', [LoginController::class, 'login'])->name('login.login');
+
+Route::get('application/login/logout', [LoginController::class, 'logout'])->middleware('auth')->name('login.logout');
 
 Route::get('application/login/recover', [LoginController::class, 'recover'])->name('login.recover');
 
-Route::get('application/home', [HomeController::class, 'index'])->name('home.index');
+Route::get('application/home', [HomeController::class, 'index'])->middleware('auth')->name('home.index');
 
 Route::resources([
     'application/users' => UsersController::class,
