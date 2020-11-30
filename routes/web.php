@@ -7,6 +7,7 @@ use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+//Auth::routes();
 
 Route::get('/', [SiteController::class, 'index'])->name('/');
 
