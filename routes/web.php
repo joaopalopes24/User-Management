@@ -7,7 +7,6 @@ use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,6 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Auth::routes();
 
 Route::get('/', [SiteController::class, 'index'])->name('/');
 
@@ -42,7 +40,3 @@ Route::resources([
     'application/pedidos' => RequestsController::class,
     'application/users' => CustomersController::class
 ]);
-
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
