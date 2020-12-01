@@ -15,21 +15,20 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password
-        ];
+        $credentials = $request->validated();
 
-        print_r($request->messages()['login_incorrect']);
+        $messages = $request->messages();
+
+        dd($messages);
 
         if (Auth::attempt($credentials)){
             if(TRUE){
                 return redirect()->route('home.index');
             } else {
-                return redirect()->route('login.index')->withErrors('Usuário Bloqueado. Favor entrar em contato com o Administrador.');
+                return redirect()->route('login.index')->withErrors($messages);
             }
         } else {
-            return redirect()->route('login.index')->withErrors('Usuário e/ou Senha Incorretos.');
+            return redirect()->route('login.index')->withErrors($messages);
         }
     }
 

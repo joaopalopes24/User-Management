@@ -31,32 +31,24 @@
       </a>
     </div>
 
-    @if($errors->all())
+    @if($errors->has('login_incorrect'))
         <div class="alert alert-danger alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-          <strong>{{ $errors->all()[0] }}</strong>
+          <strong>{{ $errors->first('login_incorrect') }}</strong>
         </div>
     @endif
 
-    @if($errors->all())
+    @if($errors->has('status_block'))
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-          <strong>{{ $errors->all()[0] }}</strong>
+          <strong>{{ $errors->first('status_block') }}</strong>
         </div>
     @endif
 
-    @if($errors->all())
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-          <strong>{{ $errors->all()[0] }}</strong>
-        </div>
-    @endif
-
-
-    <?php print_r($errors->login->first('email')); ?>
+    <?php print_r($errors->all()); ?>
 
     @yield('conteudo')
-
+    
   </div>
 
   <!-- jQuery 3 -->
