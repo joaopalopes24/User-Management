@@ -26,12 +26,43 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="{{route('/')}}"><p class="text-center"><img src="{{asset('images/logo-heimar1.png')}}" width="360"></p></a>
+      <a href="{{route('/')}}">
+        <p class="text-center"><img src="{{asset('images/logo-heimar1.png')}}" width="360"></p>
+      </a>
     </div>
+
+    @if($errors->all())
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>{{ $errors->all()[0] }}</strong>
+        </div>
+    @endif
+
+    @if($errors->all())
+        <div class="alert alert-warning alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>{{ $errors->all()[0] }}</strong>
+        </div>
+    @endif
+
+    @if($errors->all())
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+          <strong>{{ $errors->all()[0] }}</strong>
+        </div>
+    @endif
+
+
+    <?php print_r($errors->login->first('email')); ?>
 
     @yield('conteudo')
 
   </div>
+
+  <!-- jQuery 3 -->
+  <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

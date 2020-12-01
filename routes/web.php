@@ -27,18 +27,20 @@ Route::get('midia', [SiteController::class, 'midia'])->name('midia');
 
 Route::get('fale_conosco', [SiteController::class, 'fale_conosco'])->name('fale_conosco');
 
-Route::get('application/login', [LoginController::class, 'index'])->name('login.index');
+Route::prefix('application')->group(function () {
 
-Route::post('application/login', [LoginController::class, 'login'])->name('login.login');
+    Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login.index');
 
-Route::get('application/login/logout', [LoginController::class, 'logout'])->middleware('auth')->name('login.logout');
+    Route::post('login', [LoginController::class, 'login'])->name('login.login');
 
-Route::get('application/login/recover', [LoginController::class, 'recover'])->name('login.recover');
+    Route::get('home', [HomeController::class, 'index'])->middleware('auth')->name('home.index');
 
-Route::get('application/home', [HomeController::class, 'index'])->middleware('auth')->name('home.index');
+    Route::resource('usuarios', UsersController::class);
+    Route::resource('pedidos', RequestsController::class);
+    Route::resource('clientes', CustomersController::class);
 
-Route::resources([
-    'application/users' => UsersController::class,
-    'application/pedidos' => RequestsController::class,
-    'application/users' => CustomersController::class
-]);
+    Route::get('login/logout', [LoginController::class, 'logout'])->middleware('auth')->name('login.logout');
+
+    Route::get('login/recover', [LoginController::class, 'recover'])->middleware('guest')->name('login.recover');
+
+});

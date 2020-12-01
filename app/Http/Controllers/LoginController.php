@@ -4,17 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Helpers;
 
 class LoginController extends Controller
 {
     public function index()
     {
-        if (Auth::check()) {
-            return redirect()->route('home.index');
-        } else {
-            return view('login');
-        }
+        return view('login');
     }
 
     public function login(LoginRequest $request)
@@ -24,10 +20,16 @@ class LoginController extends Controller
             'password' => $request->password
         ];
 
+        print_r($request->messages()['login_incorrect']);
+
         if (Auth::attempt($credentials)){
-            return redirect()->route('application.users.index');
+            if(TRUE){
+                return redirect()->route('home.index');
+            } else {
+                return redirect()->route('login.index')->withErrors('Usuário Bloqueado. Favor entrar em contato com o Administrador.');
+            }
         } else {
-            return redirect()->route('login.index');
+            return redirect()->route('login.index')->withErrors('Usuário e/ou Senha Incorretos.');
         }
     }
 
