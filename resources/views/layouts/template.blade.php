@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
+<?php use App\Models\Permission; $permissions = Permission::permissions(); ?>
+
 <body class="hold-transition skin-custom sidebar-mini">
   <div class="wrapper">
     <header class="main-header">
@@ -78,11 +80,22 @@
     <aside class="main-sidebar">
       <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
-          <li>
+          @foreach ($permissions as $var)
+          <li class="treeview">
             <a href="#">
-              <i class="fa fa-dashboard"></i> <span>Página Inicial</span>
+              <i class="fa <?php echo "$var->menu_icon";?>"></i>
+              <span>{{ $var->menu }}</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
             </a>
+            <ul class="treeview-menu">
+              <li><a href="{{route('<?php echo "$var->route"; ?>')}}"><i class="fa <?php echo "$var->item_icon";?>"></i> {{ $var->item }}</a></li>
+            </ul>
           </li>
+          @endforeach
+
+          
           <li class="treeview">
             <a href="#">
               <i class="fa fa-users"></i>
@@ -96,51 +109,11 @@
               <li><a href="#"><i class="fa fa-plus"></i> Cadastro</a></li>
             </ul>
           </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-thumbs-o-up"></i>
-              <span>Clientes</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-table"></i> Status</a></li>
-              <li><a href="#"><i class="fa fa-plus"></i> Cadastro</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Pedidos</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-table"></i> Status</a></li>
-              <li><a href="#"><i class="fa fa-plus"></i> Cadastro</a></li>
-            </ul>
-          </li>
-          <li class="treeview">
-            <a href="#">
-              <i class="fa fa-list"></i>
-              <span>Logs</span>
-              <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-              </span>
-            </a>
-            <ul class="treeview-menu">
-              <li><a href="#"><i class="fa fa-circle-o"></i> Usuários</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Clientes</a></li>
-              <li><a href="#"><i class="fa fa-circle-o"></i> Pedidos</a></li>
-            </ul>
-          </li>
         </ul>
       </section>
     </aside>
     <!-- Fim Menu -->
-    
+
     @yield('conteudo')
 
     <!-- Início Rodapé -->
