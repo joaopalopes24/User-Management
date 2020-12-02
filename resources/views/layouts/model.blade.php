@@ -45,8 +45,6 @@
         </div>
     @endif
 
-    <?php print_r($errors->all()); ?>
-
     @yield('conteudo')
     
   </div>

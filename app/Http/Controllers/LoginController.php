@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-use App\Helpers;
 
 class LoginController extends Controller
 {
@@ -17,18 +16,14 @@ class LoginController extends Controller
     {
         $credentials = $request->validated();
 
-        $messages = $request->messages();
-
-        dd($messages);
+        if(FALSE){
+            return redirect()->route('login.index')->withErrors(['status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
+        }
 
         if (Auth::attempt($credentials)){
-            if(TRUE){
-                return redirect()->route('home.index');
-            } else {
-                return redirect()->route('login.index')->withErrors($messages);
-            }
+            return redirect()->route('home.index');
         } else {
-            return redirect()->route('login.index')->withErrors($messages);
+            return redirect()->route('login.index')->withErrors(['login_incorrect' => 'Usuário e/ou Senha Incorretos.']);
         }
     }
 

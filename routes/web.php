@@ -7,6 +7,7 @@ use App\Http\Controllers\RequestsController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CustomersController;
 use App\Http\Controllers\HomeController;
+use App\Http\Middleware\Authorization;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ use App\Http\Controllers\HomeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/* Todas as rotas para a aplicação informativa, sem acesso ao sistema */
 Route::get('/', [SiteController::class, 'index'])->name('/');
 
 Route::get('sobre', [SiteController::class, 'sobre'])->name('sobre');
@@ -26,21 +27,34 @@ Route::get('sobre', [SiteController::class, 'sobre'])->name('sobre');
 Route::get('midia', [SiteController::class, 'midia'])->name('midia');
 
 Route::get('fale_conosco', [SiteController::class, 'fale_conosco'])->name('fale_conosco');
+/* ---------- FIM ---------- */
 
-Route::prefix('application')->group(function () {
+/* Essa rotas serão redirecionadas para a HOME caso ele esteja logado */
+Route::prefix('application')->middleware('guest')->group(function () {
 
-    Route::get('login', [LoginController::class, 'index'])->middleware('guest')->name('login.index');
+    Route::get('login', [LoginController::class, 'index'])->name('login.index');
 
-    Route::post('login', [LoginController::class, 'login'])->name('login.login');
+    Route::post('application/login', [LoginController::class, 'login'])->name('login.login');
 
-    Route::get('home', [HomeController::class, 'index'])->middleware('auth')->name('home.index');
-
-    Route::resource('usuarios', UsersController::class);
-    Route::resource('pedidos', RequestsController::class);
-    Route::resource('clientes', CustomersController::class);
-
-    Route::get('login/logout', [LoginController::class, 'logout'])->middleware('auth')->name('login.logout');
-
-    Route::get('login/recover', [LoginController::class, 'recover'])->middleware('guest')->name('login.recover');
-
+    Route::get('login/recover', [LoginController::class, 'recover'])->name('login.recover');
 });
+/* ---------- FIM ---------- */
+
+/* Essa rotas serão redirecionadas para o LOGIN caso ele não esteja logado ----- Aqui verificamos a permissão */
+Route::prefix('application')->middleware('auth',Authorization::class)->group(function () {
+
+    Route::get('home', [HomeController::class, 'index'])->name('home.index');
+
+    Route::resource('users', UsersController::class);
+
+    Route::resource('requests', RequestsController::class);
+
+    Route::resource('customers', CustomersController::class);
+
+    /* Rotas que são excessões de permissão */
+    Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware(Authorization::class)->name('home.access_denied');
+    
+    Route::get('login/logout', [LoginController::class, 'logout'])->withoutMiddleware(Authorization::class)->name('login.logout');
+    /* ---------- FIM ---------- */
+});
+/* ---------- FIM ---------- */

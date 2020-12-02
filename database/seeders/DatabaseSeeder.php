@@ -20,6 +20,8 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('tbl_methods')->insert([
+            'class' => 'Home',
+            'method' => 'index',
             'route_name' => 'home.index',
         ]);
 
@@ -29,11 +31,49 @@ class DatabaseSeeder extends Seeder
             'status' => '1',
         ]);
 
+        DB::table('tbl_menus')->insert([
+            'name' => 'Administração',
+            'icon' => 'fa-cogs',
+            'status' => '1',
+        ]);
+
         DB::table('tbl_menus_items')->insert([
             'name' => 'Geral',
             'icon' => 'fa-dashboard',
             'status' => '1',
             'tbl_menus_id' => '1',
+            'tbl_methods_id' => '1',
+        ]);
+
+        DB::table('tbl_menus_items')->insert([
+            'name' => 'Detalhado',
+            'icon' => 'fa-dashboard',
+            'status' => '1',
+            'tbl_menus_id' => '1',
+            'tbl_methods_id' => '1',
+        ]);
+
+        DB::table('tbl_menus_items')->insert([
+            'name' => 'Perfis',
+            'icon' => 'fa-share',
+            'status' => '1',
+            'tbl_menus_id' => '2',
+            'tbl_methods_id' => '1',
+        ]);
+
+        DB::table('tbl_menus_items')->insert([
+            'name' => 'Menus',
+            'icon' => 'fa-table',
+            'status' => '1',
+            'tbl_menus_id' => '2',
+            'tbl_methods_id' => '1',
+        ]);
+
+        DB::table('tbl_menus_items')->insert([
+            'name' => 'Usuários',
+            'icon' => 'fa-users',
+            'status' => '1',
+            'tbl_menus_id' => '2',
             'tbl_methods_id' => '1',
         ]);
 

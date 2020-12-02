@@ -2,22 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers;
+use App\Http\Middleware\Authorization;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $permissao = Helpers::authetication_helper();
+        return view('dashboard');
+    }
 
-        if ($permissao) {
-
-            return view('dashboard');
-
-        } else {
-
-            return view('access-denied');
-
-        }
+    public function access_denied()
+    {
+        return view('access-denied');
     }
 }
