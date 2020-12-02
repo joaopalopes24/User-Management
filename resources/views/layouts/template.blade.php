@@ -140,7 +140,7 @@
       </section>
     </aside>
     <!-- Fim Menu -->
-
+    
     @yield('conteudo')
 
     <!-- Início Rodapé -->

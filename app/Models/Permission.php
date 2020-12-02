@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Permission extends Model
 {
@@ -13,6 +14,8 @@ class Permission extends Model
 
     public static function permissions(){
 
-        return Permission::all();
+        $result = Permission::all();
+
+        return $result;
     }
 }

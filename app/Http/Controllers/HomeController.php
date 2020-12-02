@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -11,7 +12,7 @@ class HomeController extends Controller
         $permissions = Permission::permissions();
 
         print_r($permissions);
-
+        
         return view('dashboard');
     }
 
