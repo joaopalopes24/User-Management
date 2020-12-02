@@ -16,11 +16,11 @@ class LoginController extends Controller
     {
         $credentials = $request->validated();
 
-        if(FALSE){
-            return redirect()->route('login.index')->withErrors(['status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
-        }
-
         if (Auth::attempt($credentials)){
+            if(Auth::user()->status == 0){
+                Auth::logout();
+                return redirect()->route('login.index')->withErrors(['status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
+            }
             return redirect()->route('home.index');
         } else {
             return redirect()->route('login.index')->withErrors(['login_incorrect' => 'Usuário e/ou Senha Incorretos.']);

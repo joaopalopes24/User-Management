@@ -3,9 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RequestsController;
-use App\Http\Controllers\UsersController;
-use App\Http\Controllers\CustomersController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\Authorization;
 
@@ -45,11 +45,11 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
 
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
-    Route::resource('users', UsersController::class);
+    Route::resource('users', UserController::class);
 
-    Route::resource('requests', RequestsController::class);
+    Route::resource('requests', RequestController::class);
 
-    Route::resource('customers', CustomersController::class);
+    Route::resource('customers', CustomerController::class);
 
     /* Rotas que são excessões de permissão */
     Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware(Authorization::class)->name('home.access_denied');

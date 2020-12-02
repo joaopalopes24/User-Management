@@ -20,7 +20,6 @@
   <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
   <!-- Stylesheets -->
 
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -48,14 +47,15 @@
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="fa fa-user" style="font-size: 1.75rem;"></i>
-                <span class="hidden-xs">Alexander Pierce TESTE TESTE TESTE</span>
+                <span class="hidden-xs">{{ Auth::user()->name }}</span>
               </a>
               <ul class="dropdown-menu">
                 <li class="user-header">
                   <p>
-                    Nome
-                    <small>Usuário</small>
-                    <small>Data</small>
+                    {{ Auth::user()->name }}
+                    <small>{{ Auth::user()->email }}</small>
+                    <br><br>
+                    <strong>{{ date('d/m/y') }}</strong>
                   </p>
                 </li>
                 <li class="user-footer">
@@ -148,7 +148,7 @@
       <div class="pull-right hidden-xs">
         <b>Version</b> 1.0.0
       </div>
-      <strong>Heimar Representações - 2020</strong>
+      <strong>Heimar Representações - {{ date('Y') }}</strong>
     </footer>
     <div class="control-sidebar-bg"></div>
   </div>

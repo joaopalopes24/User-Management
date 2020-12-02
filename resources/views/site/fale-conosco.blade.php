@@ -5,7 +5,7 @@
 <div class="carousel slide" style="height: 300px; margin-bottom:60px;">
     <div class="carousel-inner" role="listbox">
         <div class="item active" style="height: 300px;">
-            <img src="">
+            <img src="{{asset('images/fale_conosco.png')}}">
         </div>
     </div>
 </div>
