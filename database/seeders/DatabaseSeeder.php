@@ -7,23 +7,66 @@ use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
+        $resource = [
+            '0' => 'index',
+            '1' => 'create',
+            '2' => 'store',
+            '3' => 'show',
+            '4' => 'edit',
+            '5' => 'update',
+            '6' => 'destroy',
+        ];
+
         DB::table('tbl_profiles')->insert([
-            'name' => 'Administrador',
+            'name' => 'Administrador Master',
             'status' => '1',
         ]);
 
         DB::table('tbl_methods')->insert([
-            'class' => 'Home',
+            'class' => 'HomeController',
             'method' => 'index',
             'route' => 'home.index',
         ]);
+
+        DB::table('tbl_methods')->insert([
+            'class' => 'HomeController',
+            'method' => 'detailed',
+            'route' => 'home.detailed',
+        ]);
+
+        foreach ($resource as $var) {
+            DB::table('tbl_methods')->insert([
+                'class' => 'ProfileController',
+                'method' => $var,
+                'route' => 'profiles.' . $var,
+            ]);
+        }
+
+        foreach ($resource as $var) {
+            DB::table('tbl_methods')->insert([
+                'class' => 'MenuController',
+                'method' => $var,
+                'route' => 'menus.' . $var,
+            ]);
+        }
+
+        foreach ($resource as $var) {
+            DB::table('tbl_methods')->insert([
+                'class' => 'ItemController',
+                'method' => $var,
+                'route' => 'items.' . $var,
+            ]);
+        }
+
+        foreach ($resource as $var) {
+            DB::table('tbl_methods')->insert([
+                'class' => 'UserController',
+                'method' => $var,
+                'route' => 'users.' . $var,
+            ]);
+        }
 
         DB::table('tbl_menus')->insert([
             'name' => 'Página Inicial',
@@ -50,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'icon' => 'fa-pie-chart',
             'status' => '1',
             'tbl_menus_id' => '1',
-            'tbl_methods_id' => '1',
+            'tbl_methods_id' => '2',
         ]);
 
         DB::table('tbl_menus_items')->insert([
@@ -58,7 +101,7 @@ class DatabaseSeeder extends Seeder
             'icon' => 'fa-share',
             'status' => '1',
             'tbl_menus_id' => '2',
-            'tbl_methods_id' => '1',
+            'tbl_methods_id' => '3',
         ]);
 
         DB::table('tbl_menus_items')->insert([
@@ -66,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'icon' => 'fa-table',
             'status' => '1',
             'tbl_menus_id' => '2',
-            'tbl_methods_id' => '1',
+            'tbl_methods_id' => '10',
         ]);
 
         DB::table('tbl_menus_items')->insert([
@@ -74,18 +117,20 @@ class DatabaseSeeder extends Seeder
             'icon' => 'fa-users',
             'status' => '1',
             'tbl_menus_id' => '2',
-            'tbl_methods_id' => '1',
+            'tbl_methods_id' => '24',
         ]);
 
-        DB::table('tbl_permissions')->insert([
-            'tbl_profiles_id' => '1',
-            'tbl_methods_id' => '1',
-        ]);
+        for ($i = 1; $i <= 30; $i++) {
+            DB::table('tbl_permissions')->insert([
+                'tbl_profiles_id' => '1',
+                'tbl_methods_id' => $i,
+            ]);
+        }
 
         DB::table('tbl_users')->insert([
             'name' => 'João Pedro de Aguiar Lopes',
             'email' => 'joaopalopes24@gmail.com',
-            'password' => '$2y$10$ULuM3ur3W9TrfLdr8P31wOixHa3gHyd7jVYlZznlBS9AQEz/zl1Ci',
+            'password' => '$2y$10$JNo7V4EixKK5j9nQ.QutxuTqTuQdt9QDLfaoe7dQDhZ1TSPgDd8eS',
             'cpf' => '072.778.466-80',
             'status' => '1',
             'tbl_profiles_id' => '1',

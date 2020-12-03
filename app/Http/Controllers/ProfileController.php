@@ -8,7 +8,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        //
+        return view('profiles.profiles-index');
     }
 
     public function create()

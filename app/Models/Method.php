@@ -9,5 +9,25 @@ class Method extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_methods as mt';
+    protected $table = 'tbl_methods';
+
+    public $timestamps = false;
+
+    public static function read($value)
+    {       
+        $result = Method::where('route',$value)->count();
+
+        return $result;
+    }
+
+    public static function create($controller,$action,$route)
+    {       
+        $method = new Method;
+
+        $method->class = $controller;
+        $method->method = $action;
+        $method->route = $route;
+
+        return $method->save();
+    }
 }

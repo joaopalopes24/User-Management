@@ -47,6 +47,8 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
 
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
+    Route::get('home/detailed', [HomeController::class, 'detailed'])->name('home.detailed');
+
     Route::resource('profiles', ProfileController::class);
 
     Route::resource('menus', MenuController::class);

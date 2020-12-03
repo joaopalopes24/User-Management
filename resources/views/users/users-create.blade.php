@@ -7,22 +7,18 @@
             Adicionar Usuário
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Página Inicial</a></li>
+            <li><a href="{{route('home.index')}}"><i class="fa fa-dashboard"></i> Página Inicial</a></li>
             <li class="active">Usuários</li>
             <li class="active">Cadastro</li>
         </ol>
     </section>
     <section class="content">
         <div class="row">
-            <!-- left column -->
             <div class="col-md-12">
-                <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
                         <h3 class="box-title">Dados Cadastrais</h3>
                     </div>
-                    <!-- /.box-header -->
-                    <!-- form start -->
                     <form class="needs-validation" novalidate>
                         <div class="box-body">
                             <div class="row col-md-12">
@@ -131,15 +127,12 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="box-footer">
                             <button type="submit" class="btn btn-primary">Concluir</button>
                         </div>
                     </form>
-
                 </div>
             </div>
-
         </div>
     </section>
 </div>

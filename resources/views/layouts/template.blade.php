@@ -92,7 +92,7 @@
               <ul class="treeview-menu">
                 @foreach ($items as $var2)
                   @if($var2->menu_id == $var1->id)
-                    <li><a href="{{route('<?php echo "$var2->route"; ?>')}}"><i class="fa <?php echo "$var2->icon"; ?>"></i> {{$var2->name}}</a></li>
+                    <li><a href="{{route($var2->route)}}"><i class="fa <?php echo "$var2->icon"; ?>"></i> {{$var2->name}}</a></li>
                   @endif
                 @endforeach
               </ul>

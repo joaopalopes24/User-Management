@@ -7,7 +7,8 @@
             Página Inicial
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Página Inicial</a></li>
+            <li><a href="{{route('home.index')}}"><i class="fa fa-dashboard"></i> Página Inicial</a></li>
+            <li class="active">Geral</li>
         </ol>
     </section>
     <section class="content">

@@ -8,12 +8,12 @@ class UserController extends Controller
 {
     public function index()
     {
-        //
+        return view('users.users-index');
     }
 
     public function create()
     {
-        //
+        return view('users.users-create');
     }
 
     public function store(Request $request)
