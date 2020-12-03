@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Permission;
-
 class HomeController extends Controller
 {
     public function index()

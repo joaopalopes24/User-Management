@@ -7,6 +7,8 @@ use App\Http\Controllers\RequestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MenuController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Authorization;
 
 /*
@@ -45,6 +47,12 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
 
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
+    Route::resource('profiles', ProfileController::class);
+
+    Route::resource('menus', MenuController::class);
+
+    Route::resource('items', ItemController::class);
+    
     Route::resource('users', UserController::class);
 
     Route::resource('requests', RequestController::class);

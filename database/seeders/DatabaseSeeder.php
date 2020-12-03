@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         DB::table('tbl_methods')->insert([
             'class' => 'Home',
             'method' => 'index',
-            'route_name' => 'home.index',
+            'route' => 'home.index',
         ]);
 
         DB::table('tbl_menus')->insert([
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tbl_menus_items')->insert([
             'name' => 'Geral',
-            'icon' => 'fa-dashboard',
+            'icon' => 'fa-align-left',
             'status' => '1',
             'tbl_menus_id' => '1',
             'tbl_methods_id' => '1',
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tbl_menus_items')->insert([
             'name' => 'Detalhado',
-            'icon' => 'fa-dashboard',
+            'icon' => 'fa-pie-chart',
             'status' => '1',
             'tbl_menus_id' => '1',
             'tbl_methods_id' => '1',
