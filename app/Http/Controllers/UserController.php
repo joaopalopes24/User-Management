@@ -23,12 +23,12 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+        return view('users.users-show');
     }
 
     public function edit($id)
     {
-        //
+        return view('users.users-edit');
     }
 
     public function update(Request $request, $id)
@@ -38,6 +38,6 @@ class UserController extends Controller
     
     public function destroy($id)
     {
-        //
+        print_r('teste');
     }
 }

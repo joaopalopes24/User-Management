@@ -128,7 +128,8 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-primary">Concluir</button>
+                            <a href="{{route('users.index')}}"><button type="button" class="btn btn-danger">Voltar</button></a>
+                            <button type="submit" class="btn btn-success">Concluir</button>
                         </div>
                     </form>
                 </div>

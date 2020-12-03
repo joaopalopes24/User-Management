@@ -15,50 +15,43 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="box box-primary">
-                    <div class="box-header with-border">
-                        <button class="btn btn-success pull-right">Novo Perfil</button>
+                <!---------- Início Tabela ---------->
+                <div class="box">
+                    <div class="box-header">
+                        <button class="btn btn-primary pull-left">Novo Perfil</button>
                     </div>
                     <div class="box-body">
-                        <div class="row col-sm-12">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>First Name</th>
-                                            <th>Last Name</th>
-                                            <th>Username</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Larry</td>
-                                            <td>the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome do Perfil</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for($i=1;$i<120;$i++) <tr>
+                                    <td><?= $i ?></td>
+                                    <td>Administrador Master</td>
+                                    <td>1</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <a href=""><button class="btn btn-warning"><i class="fa fa-align-justify"></i></button></a>
+                                            <a href=""><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
+                                            <a href=""><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                            <a href=""><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                        </div>
+                                    </td>
+                                    </tr>
+                                    @endfor
+                            </tbody>
+                        </table>
                         </div>
                     </div>
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Concluir</button>
-                    </div>
                 </div>
+                <!---------- Fim Tabela ---------->
             </div>
         </div>
     </section>
