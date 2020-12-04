@@ -66,7 +66,21 @@ class User extends Authenticatable
         $user->cpf = $dados['cpf'];
         $user->number = $dados['number'];
         $user->email = $dados['email'];
-        $user->password = Hash::make($dados['password']);
+        $user->password = Hash::make('nova@123*');
+        $user->status = $dados['status'];
+        $user->tbl_profiles_id = $dados['profile'];
+        
+        return $user->save();
+    }
+
+    public static function modernize($id,$dados)
+    {
+        $user = User::find($id);
+
+        $user->name = $dados['name'];
+        $user->cpf = $dados['cpf'];
+        $user->number = $dados['number'];
+        $user->email = $dados['email'];
         $user->status = $dados['status'];
         $user->tbl_profiles_id = $dados['profile'];
         

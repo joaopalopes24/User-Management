@@ -22,10 +22,10 @@
                     </div>
                 @endif
 
-                @if($errors->has('status_block'))
+                @if($errors->has('failed'))
                     <div class="alert alert-danger alert-dismissible" role="alert">
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-                        <strong>{{ $errors->first('status_block') }}</strong>
+                        <strong>{{ $errors->first('failed') }}</strong>
                     </div>
                 @endif
             </div>
@@ -65,9 +65,9 @@
                                         @else
                                             <td><?php echo 'Sem Perfil';?></td>
                                         @endif
-                                        @if($var1->status == 1)
+                                        @if($var1->status == 2)
                                             <td><?php echo 'Ativo';?></td>
-                                        @elseif($var1->status == 0)
+                                        @elseif($var1->status == 1)
                                             <td><?php echo 'Inativo';?></td>
                                         @else
                                             <td><?php echo 'Sem Status';?></td>

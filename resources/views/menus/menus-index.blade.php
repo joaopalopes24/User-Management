@@ -38,9 +38,9 @@
                                         <td>{{$var1->id}}</td>
                                         <td>{{$var1->name}}</td>
                                         <td>{{$var1->icon}}</td>
-                                        @if($var1->status == 1)
+                                        @if($var1->status == 2)
                                             <td><?php echo 'Ativo';?></td>
-                                        @elseif($var1->status == 0)
+                                        @elseif($var1->status == 1)
                                             <td><?php echo 'Inativo';?></td>
                                         @else
                                             <td><?php echo 'Sem Status';?></td>

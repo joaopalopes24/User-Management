@@ -18,7 +18,6 @@ class UserRequest extends FormRequest
             'cpf' => 'required',
             'number' => 'required',
             'email' => 'required|email',
-            'password' => 'required',
             'status' => 'required',
             'profile' => 'required',
         ];
@@ -29,6 +28,9 @@ class UserRequest extends FormRequest
         return [
             'success' => 'Usuário cadastrado com sucesso.',
             'failed' => 'Usuário não cadastrado. Favor entrar em contato com o Administrador.',
+
+            'success' => 'Usuário editado com sucesso.',
+            'failed' => 'Usuário não editado. Favor entrar em contato com o Administrador.',
         ];
     }
 }

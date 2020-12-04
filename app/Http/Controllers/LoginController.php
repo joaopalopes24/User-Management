@@ -17,7 +17,7 @@ class LoginController extends Controller
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)){
-            if(Auth::user()->status == 0){
+            if(Auth::user()->status == 1){
                 Auth::logout();
                 return redirect()->route('login.index')->withErrors(['status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
             }

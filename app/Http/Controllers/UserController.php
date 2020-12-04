@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $dados = [
-            'users' => User::read(NULL,NULL,NULL,NULL,NULL,1,NULL),
+            'users' => User::read(NULL,NULL,NULL,NULL,NULL,NULL,NULL),
             'profiles' => Profile::read(NULL,NULL,NULL),
         ];
         
@@ -38,17 +38,31 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return view('users.users-show');
+        $dados = [
+            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
+            'profiles' => Profile::read(NULL,NULL,NULL),
+        ];
+
+        return view('users.users-show',$dados);
     }
 
     public function edit($id)
     {
-        return view('users.users-edit');
+        $dados = [
+            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
+            'profiles' => Profile::read(NULL,NULL,NULL),
+        ];
+
+        return view('users.users-edit',$dados);
     }
 
     public function update(UserRequest $request, $id)
     {
-        //
+        $dados = $request->validated();
+
+        User::modernize($id,$dados);
+
+        return redirect()->route('users.index')->withErrors(['success' => 'Usuário editado com sucesso.']);
     }
     
     public function destroy($id)
