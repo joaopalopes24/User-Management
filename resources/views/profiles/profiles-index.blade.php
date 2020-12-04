@@ -32,20 +32,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for($i=1;$i<120;$i++) <tr>
-                                    <td><?= $i ?></td>
-                                    <td>Administrador Master</td>
-                                    <td>1</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href=""><button class="btn btn-warning"><i class="fa fa-align-justify"></i></button></a>
-                                            <a href=""><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
-                                            <a href=""><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
-                                            <a href=""><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
-                                        </div>
-                                    </td>
+                                @foreach($profiles as $var1)
+                                    <tr>
+                                        <td>{{$var1->id}}</td>
+                                        <td>{{$var1->name}}</td>
+                                        @if($var1->status == 1)
+                                            <td><?php echo 'Ativo';?></td>
+                                        @elseif($var1->status == 0)
+                                            <td><?php echo 'Inativo';?></td>
+                                        @else
+                                            <td><?php echo 'Sem Status';?></td>
+                                        @endif
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="#"><button class="btn btn-warning"><i class="fa fa-align-justify"></i></button></a>
+                                                <a href="{{route('profiles.show',$var1->id)}}"><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
+                                                <a href="{{route('profiles.edit',$var1->id)}}"><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                                <a href="{{route('profiles.destroy',$var1->id)}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    @endfor
+                                @endforeach
                             </tbody>
                         </table>
                         </div>

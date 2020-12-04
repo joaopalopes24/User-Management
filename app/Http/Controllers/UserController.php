@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Profile;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
         $dados = [
-            'users' => User::index(),
-            'profiles' => Profile::index(),
+            'users' => User::read(NULL,NULL,NULL,NULL,NULL,1,NULL),
+            'profiles' => Profile::read(NULL,NULL,NULL),
         ];
         
         return view('users.users-index',$dados);
@@ -20,12 +20,20 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('users.users-create');
+        $dados = [
+            'profiles' => Profile::read(NULL,NULL,NULL),
+        ];
+
+        return view('users.users-create',$dados);
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
-        //
+        $dados = $request->validated();
+
+        User::create($dados);
+
+        return redirect()->route('users.index');
     }
 
     public function show($id)
@@ -38,7 +46,7 @@ class UserController extends Controller
         return view('users.users-edit');
     }
 
-    public function update(Request $request, $id)
+    public function update(UserRequest $request, $id)
     {
         //
     }

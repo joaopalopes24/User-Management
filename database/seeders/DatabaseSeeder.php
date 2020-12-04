@@ -130,6 +130,7 @@ class DatabaseSeeder extends Seeder
         DB::table('tbl_users')->insert([
             'name' => 'João Pedro de Aguiar Lopes',
             'email' => 'joaopalopes24@gmail.com',
+            'number' => '(38) 99144-6655',
             'password' => '$2y$10$JNo7V4EixKK5j9nQ.QutxuTqTuQdt9QDLfaoe7dQDhZ1TSPgDd8eS',
             'cpf' => '072.778.466-80',
             'status' => '1',

@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Menu extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_profiles';
+    protected $table = 'tbl_menus';
 
     public static function read($id,$name,$status)
     {       
-        $result = Profile::select()
+        $result = Menu::select()
             ->when($id, function ($query, $id) {
                 return $query->where('id', $id);
             })

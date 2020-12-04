@@ -17,6 +17,7 @@ class CreateTblUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('number',45);
             $table->string('password');
             $table->string('cpf',45)->unique();
             $table->boolean('status');

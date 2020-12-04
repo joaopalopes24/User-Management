@@ -15,11 +15,12 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'cpf' => 'required',
+            'number' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'cpf' => 'required',
             'status' => 'required',
-            'perfil' => 'required',
+            'profile' => 'required',
         ];
     }
 

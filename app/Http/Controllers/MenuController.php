@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
     public function index()
     {
-        return view('menus.menus-index');
+        $dados = [
+            'menus' => Menu::read(NULL,NULL,NULL),
+        ];
+
+        return view('menus.menus-index',$dados);
     }
 
     public function create()
