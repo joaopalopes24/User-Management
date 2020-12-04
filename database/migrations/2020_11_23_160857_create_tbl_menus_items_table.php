@@ -17,7 +17,7 @@ class CreateTblMenusItemsTable extends Migration
             $table->id();
             $table->string('name',45);
             $table->string('icon',45);
-            $table->tinyInteger('status');
+            $table->boolean('status');
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
             $table->unsignedBigInteger('tbl_menus_id');

@@ -19,7 +19,7 @@ class CreateTblUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('cpf',45)->unique();
-            $table->tinyInteger('status');
+            $table->boolean('status');
             $table->rememberToken();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');

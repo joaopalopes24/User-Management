@@ -35,22 +35,37 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @for($i=1;$i<120;$i++) <tr>
-                                    <td><?= $i ?></td>
-                                    <td>João Pedro de Aguiar Lopes</td>
-                                    <td>joaopalopes24@gmail.com</td>
-                                    <td>072.778.466-80</td>
-                                    <td>Administrador Master</td>
-                                    <td>1</td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <a href="{{route('users.show',1)}}"><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
-                                            <a href="{{route('users.edit',1)}}"><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
-                                            <a href="{{route('users.destroy',1)}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
-                                        </div>
-                                    </td>
+                                @foreach($users as $var1)
+                                    <tr>
+                                        <td>{{$var1->id}}</td>
+                                        <td>{{$var1->name}}</td>
+                                        <td>{{$var1->email}}</td>
+                                        <td>{{$var1->cpf}}</td>
+                                        @if($var1->tbl_profiles_id != NULL)
+                                            @foreach($profiles as $var2)
+                                                @if($var2->id == $var1->tbl_profiles_id)
+                                                    <td>{{$var2->name}}</td>
+                                                @endif
+                                            @endforeach
+                                        @else
+                                            <td><?php echo 'Sem Perfil';?></td>
+                                        @endif
+                                        @if($var1->status == 1)
+                                            <td><?php echo 'Ativo';?></td>
+                                        @elseif($var1->status == 0)
+                                            <td><?php echo 'Inativo';?></td>
+                                        @else
+                                            <td><?php echo 'Sem Status';?></td>
+                                        @endif
+                                        <td>
+                                            <div class="btn-group">
+                                                <a href="{{route('users.show',$var1->id)}}"><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
+                                                <a href="{{route('users.edit',$var1->id)}}"><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
+                                                <a href="{{route('users.destroy',$var1->id)}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    @endfor
+                                @endforeach
                             </tbody>
                         </table>
                         </div>

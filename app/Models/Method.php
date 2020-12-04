@@ -11,8 +11,6 @@ class Method extends Model
 
     protected $table = 'tbl_methods';
 
-    public $timestamps = false;
-
     public static function read($value)
     {       
         $result = Method::where('route',$value)->count();
