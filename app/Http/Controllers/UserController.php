@@ -33,7 +33,7 @@ class UserController extends Controller
 
         User::create($dados);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->withErrors(['success' => 'Usuário cadastrado com sucesso.']);
     }
 
     public function show($id)
