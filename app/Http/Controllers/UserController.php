@@ -31,16 +31,23 @@ class UserController extends Controller
     {
         $dados = $request->validated();
 
-        User::create($dados);
+        $result = User::create($dados);
+
+        if(!$result){
+            return redirect()->route('users.index')->withErrors(['failed' => 'Usuário não cadastrado. Favor entrar em contato com o Administrador.']);
+        }
 
         return redirect()->route('users.index')->withErrors(['success' => 'Usuário cadastrado com sucesso.']);
     }
 
     public function show($id)
     {
+        $users = User::read($id,NULL,NULL,NULL,NULL,NULL,NULL);
+        $id_perfil = $users->first()->tbl_profiles_id;
+
         $dados = [
-            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
-            'profiles' => Profile::read(NULL,NULL,NULL),
+            'users' => $users,
+            'profiles' => Profile::read($id_perfil,NULL,NULL),
         ];
 
         return view('users.users-show',$dados);
@@ -67,6 +74,8 @@ class UserController extends Controller
     
     public function destroy($id)
     {
-        print_r('teste');
+        User::erase($id);
+
+        return redirect()->route('users.index')->withErrors(['success' => 'Usuário deletado com sucesso.']);
     }
 }

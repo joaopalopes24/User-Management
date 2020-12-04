@@ -18,12 +18,4 @@ class LoginRequest extends FormRequest
             'password' => 'required'
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'login_incorrect' => 'Usuário e/ou Senha Incorretos.',
-            'status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.',
-        ];
-    }
 }

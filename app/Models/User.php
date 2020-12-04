@@ -86,4 +86,11 @@ class User extends Authenticatable
         
         return $user->save();
     }
+
+    public static function erase($id)
+    {
+        $user = User::find($id);
+        
+        return $user->delete();
+    }
 }
