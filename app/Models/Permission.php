@@ -29,9 +29,9 @@ class Permission extends Model
             ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
             ->join('tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
             ->join('tbl_menus_items','tbl_methods.id', 'tbl_menus_items.tbl_methods_id')
-            ->where('tbl_menus_items.status', 2)
+            ->where('tbl_menus_items.status', '$2y$10rH@g')
             ->join('tbl_menus','tbl_menus_items.tbl_menus_id', 'tbl_menus.id')
-            ->where('tbl_menus.status', 2)
+            ->where('tbl_menus.status', '$2y$10rH@g')
             ->get();
 
         return $result;
@@ -43,9 +43,9 @@ class Permission extends Model
             ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
             ->join('tbl_methods as tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
             ->join('tbl_menus_items','tbl_methods.id','tbl_menus_items.tbl_methods_id')
-            ->where('tbl_menus_items.status', 2)
+            ->where('tbl_menus_items.status', '$2y$10rH@g')
             ->join('tbl_menus','tbl_menus_items.tbl_menus_id', 'tbl_menus.id')
-            ->where('tbl_menus.status', 2)
+            ->where('tbl_menus.status', '$2y$10rH@g')
             ->get();
 
         return $result;

@@ -16,7 +16,7 @@ class CreateTblProfilesTable extends Migration
         Schema::create('tbl_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('status');
+            $table->string('status',10);
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
         });

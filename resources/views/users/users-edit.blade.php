@@ -70,8 +70,8 @@
                                     <label for="status">Status</label>
                                     <select class="form-control custom-select" name="status" id="status" required>
                                         <option value="">Status do Usuário</option>
-                                        <option value="2" <?php if($users->first()->status == 2) echo 'selected'; ?>>Ativo</option>
-                                        <option value="1" <?php if($users->first()->status == 1) echo 'selected'; ?>>Inativo</option>
+                                        <option value="$2y$10rH@g" <?php if($users->first()->status == '$2y$10rH@g') echo 'selected'; ?>>Ativo</option>
+                                        <option value=".fZEW.57&!" <?php if($users->first()->status == '.fZEW.57&!') echo 'selected'; ?>>Inativo</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Campo Obrigatório

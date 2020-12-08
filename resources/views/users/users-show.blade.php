@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="col-sm-6 col-md-3 col-lg-3 form-group">
                                     <label>Status</label>
-                                    <input class="form-control" value="<?php if($users->first()->status == 2){echo 'Ativo';}elseif($users->first()->status == 1){echo 'Inativo';}else{echo 'Sem Status';}?>" disabled>
+                                    <input class="form-control" value="<?php if($users->first()->status == '$2y$10rH@g'){echo 'Ativo';}elseif($users->first()->status == '.fZEW.57&!'){echo 'Inativo';}else{echo 'Sem Status';}?>" disabled>
                                 </div>
                             </div>
                         </div>

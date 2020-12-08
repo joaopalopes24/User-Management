@@ -39,7 +39,7 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Nome</th>
+                                        <th>Nome do Usuário</th>
                                         <th>E-mail</th>
                                         <th>CPF</th>
                                         <th>Perfil</th>
@@ -55,30 +55,30 @@
                                         <td>{{$var1->email}}</td>
                                         <td>{{$var1->cpf}}</td>
                                         @if($var1->tbl_profiles_id != NULL)
-                                        @foreach($profiles as $var2)
-                                        @if($var2->id == $var1->tbl_profiles_id)
-                                        <td>{{$var2->name}}</td>
-                                        @endif
-                                        @endforeach
+                                            @foreach($profiles as $var2)
+                                                @if($var2->id == $var1->tbl_profiles_id)
+                                                    <td>{{$var2->name}}</td>
+                                                @endif
+                                            @endforeach
                                         @else
-                                        <td><?php echo 'Sem Perfil';?></td>
+                                            <td>Sem Perfil</td>
                                         @endif
-                                        @if($var1->status == 2)
-                                        <td><?php echo 'Ativo';?></td>
-                                        @elseif($var1->status == 1)
-                                        <td><?php echo 'Inativo';?></td>
+                                        @if($var1->status == '$2y$10rH@g')
+                                            <td>Ativo</td>
+                                        @elseif($var1->status == '.fZEW.57&!')
+                                            <td>Inativo</td>
                                         @else
-                                        <td><?php echo 'Sem Status';?></td>
+                                            <td>Sem Status</td>
                                         @endif
                                         <td>
                                             <div class="btn-group">
                                                 <a href="{{route('users.show',$var1->id)}}"><button type="button" class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
                                                 <a href="{{route('users.edit',$var1->id)}}"><button type="button" class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
-                                                <a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default<?php echo "$var1->id"; ?>">
+                                                <a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default{{$var1->id}}">
                                                     <i class="fa fa-trash"></i>
                                                 </button></a>                                               
                                             </div>
-                                            <div class="modal fade" id="modal-default<?php echo "$var1->id"; ?>" style="display: none;">
+                                            <div class="modal fade" id="modal-default{{$var1->id}}" style="display: none;">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
                                                         <div class="modal-header">

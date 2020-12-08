@@ -36,12 +36,12 @@
                                     <tr>
                                         <td>{{$var1->id}}</td>
                                         <td>{{$var1->name}}</td>
-                                        @if($var1->status == 2)
-                                            <td><?php echo 'Ativo';?></td>
-                                        @elseif($var1->status == 1)
-                                            <td><?php echo 'Inativo';?></td>
+                                        @if($var1->status == '$2y$10rH@g')
+                                            <td>Ativo</td>
+                                        @elseif($var1->status == '.fZEW.57&!')
+                                            <td>Inativo</td>
                                         @else
-                                            <td><?php echo 'Sem Status';?></td>
+                                            <td>Sem Status</td>
                                         @endif
                                         <td>
                                             <div class="btn-group">

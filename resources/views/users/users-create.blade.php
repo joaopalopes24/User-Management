@@ -69,8 +69,8 @@
                                     <label for="status">Status</label>
                                     <select class="form-control custom-select" name="status" id="status" required>
                                         <option value="">Status do Usuário</option>
-                                        <option value="2">Ativo</option>
-                                        <option value="1">Inativo</option>
+                                        <option value="$2y$10rH@g">Ativo</option>
+                                        <option value=".fZEW.57&!">Inativo</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         Campo Obrigatório

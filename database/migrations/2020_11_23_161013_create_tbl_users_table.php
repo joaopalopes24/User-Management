@@ -20,7 +20,7 @@ class CreateTblUsersTable extends Migration
             $table->string('number',45);
             $table->string('password');
             $table->string('cpf',45)->unique();
-            $table->boolean('status');
+            $table->string('status',10);
             $table->rememberToken();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
