@@ -36,7 +36,7 @@ Route::prefix('application')->middleware('guest')->group(function () {
 
     Route::get('login', [LoginController::class, 'index'])->name('login.index');
 
-    Route::post('application/login', [LoginController::class, 'login'])->name('login.login');
+    Route::post('login', [LoginController::class, 'login'])->name('login.login');
 
     Route::get('login/recover', [LoginController::class, 'recover'])->name('login.recover');
 });

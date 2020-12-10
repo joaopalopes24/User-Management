@@ -105,7 +105,39 @@
         </aside>
         <!-- Fim Menu -->
 
-        @yield('conteudo')
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    @yield('title')
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{{route('home.index')}}"><i class="fa fa-dashboard"></i> Página Inicial</a></li>
+                    <li class="active">@yield('title')</li>
+                    <li class="active">@yield('subtitle')</li>
+                </ol>
+            </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        @if($errors->has('success'))
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                            <strong>{{ $errors->first('success') }}</strong>
+                        </div>
+                        @endif
+                        @if($errors->has('failed'))
+                        <div class="alert alert-danger alert-dismissible" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
+                            <strong>{{ $errors->first('failed') }}</strong>
+                        </div>
+                        @endif
+                    </div>
+                    
+                    @yield('conteudo')
+
+                </div>
+            </section>
+        </div>
 
         <!-- Início Rodapé -->
         <footer class="main-footer">
