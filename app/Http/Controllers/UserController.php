@@ -31,9 +31,9 @@ class UserController extends Controller
     {
         $dados = $request->validated();
 
-        $result = User::create($dados);
-
-        if(!$result){
+        try{
+            User::create($dados);
+        } catch(\Exception $exception) {
             return redirect()->route('users.index')->withErrors(['failed' => 'Usuário não cadastrado. Favor entrar em contato com o Administrador.']);
         }
 
@@ -67,14 +67,22 @@ class UserController extends Controller
     {
         $dados = $request->validated();
 
-        User::modernize($id,$dados);
+        try{
+            User::modernize($id,$dados);
+        } catch(\Exception $exception) {
+            return redirect()->route('users.index')->withErrors(['failed' => 'Usuário não editado. Favor entrar em contato com o Administrador.']);
+        }       
 
         return redirect()->route('users.index')->withErrors(['success' => 'Usuário editado com sucesso.']);
     }
     
     public function destroy($id)
     {
-        User::erase($id);
+        try{
+            User::erase($id);
+        } catch(\Exception $exception) {
+            return redirect()->route('users.index')->withErrors(['failed' => 'Usuário não deletado. Favor entrar em contato com o Administrador.']);
+        } 
 
         return redirect()->route('users.index')->withErrors(['success' => 'Usuário deletado com sucesso.']);
     }

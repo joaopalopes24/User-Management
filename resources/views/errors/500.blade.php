@@ -1,4 +1,5 @@
 @extends('layouts.error')
+@section('title','Error 500')
 @section('conteudo')
 <!-- Início Conteúdo -->
 <section class="content">
