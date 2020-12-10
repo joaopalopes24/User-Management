@@ -31,11 +31,13 @@ class UserController extends Controller
     {
         $dados = $request->validated();
 
-        try{
+        User::create($dados);
+
+       /*  try{
             User::create($dados);
         } catch(\Exception $exception) {
             return redirect()->route('users.index')->withErrors(['failed' => 'Usuário não cadastrado. Favor entrar em contato com o Administrador.']);
-        }
+        } */
 
         return redirect()->route('users.index')->withErrors(['success' => 'Usuário cadastrado com sucesso.']);
     }
