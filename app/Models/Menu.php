@@ -27,4 +27,33 @@ class Menu extends Model
         
         return $result;
     }
+
+    public static function create($dados)
+    {       
+        $user = new Menu;
+
+        $user->name = $dados['name'];
+        $user->icon = $dados['icon'];
+        $user->status = $dados['status'];
+        
+        return $user->save();
+    }
+
+    public static function modernize($id,$dados)
+    {
+        $user = Menu::find($id);
+
+        $user->name = $dados['name'];
+        $user->icon = $dados['icon'];
+        $user->status = $dados['status'];
+        
+        return $user->save();
+    }
+
+    public static function erase($id)
+    {
+        $user = Menu::find($id);
+        
+        return $user->delete();
+    }
 }

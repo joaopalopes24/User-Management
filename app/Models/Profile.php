@@ -27,4 +27,31 @@ class Profile extends Model
         
         return $result;
     }
+
+    public static function create($dados)
+    {       
+        $user = new Profile;
+
+        $user->name = $dados['name'];
+        $user->status = $dados['status'];
+        
+        return $user->save();
+    }
+
+    public static function modernize($id,$dados)
+    {
+        $user = Profile::find($id);
+
+        $user->name = $dados['name'];
+        $user->status = $dados['status'];
+        
+        return $user->save();
+    }
+
+    public static function erase($id)
+    {
+        $user = Profile::find($id);
+        
+        return $user->delete();
+    }
 }

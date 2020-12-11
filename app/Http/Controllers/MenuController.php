@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MenuRequest;
 use App\Models\Menu;
-use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
@@ -18,31 +18,49 @@ class MenuController extends Controller
 
     public function create()
     {
-        //
+        return view('menus.menus-create');
     }
 
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
-        //
+        $dados = $request->validated();
+
+        Menu::create($dados);
+
+        return redirect()->route('menus.index')->withErrors(['success' => 'Menu cadastrado com sucesso.']);
     }
 
     public function show($id)
     {
-        //
+        $dados = [
+            'menus' => Menu::read($id,NULL,NULL),
+        ];
+
+        return view('menus.menus-show',$dados);
     }
 
     public function edit($id)
     {
-        //
+        $dados = [
+            'menus' => Menu::read($id,NULL,NULL),
+        ];
+
+        return view('menus.menus-edit',$dados);
     }
 
-    public function update(Request $request, $id)
+    public function update(MenuRequest $request, $id)
     {
-        //
+        $dados = $request->validated();
+
+        Menu::modernize($id,$dados);
+        
+        return redirect()->route('menus.index')->withErrors(['success' => 'Menu editado com sucesso.']);
     }
     
     public function destroy($id)
     {
-        //
+        Menu::erase($id);
+
+        return redirect()->route('menus.index')->withErrors(['success' => 'Menu deletado com sucesso.']);
     }
 }

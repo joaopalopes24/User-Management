@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProfileRequest;
 use App\Models\Profile;
-use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -18,31 +18,49 @@ class ProfileController extends Controller
 
     public function create()
     {
-        //
+        return view('profiles.profiles-create');
     }
 
-    public function store(Request $request)
+    public function store(ProfileRequest $request)
     {
-        //
+        $dados = $request->validated();
+
+        Profile::create($dados);
+
+        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil cadastrado com sucesso.']);
     }
 
     public function show($id)
     {
-        //
+        $dados = [
+            'profiles' => Profile::read($id,NULL,NULL),
+        ];
+
+        return view('profiles.profiles-show',$dados);
     }
 
     public function edit($id)
     {
-        //
+        $dados = [
+            'profiles' => Profile::read($id,NULL,NULL),
+        ];
+
+        return view('profiles.profiles-edit',$dados);
     }
 
-    public function update(Request $request, $id)
+    public function update(ProfileRequest $request, $id)
     {
-        //
+        $dados = $request->validated();
+
+        Profile::modernize($id,$dados);
+        
+        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil editado com sucesso.']);
     }
     
     public function destroy($id)
     {
-        //
+        Profile::erase($id);
+
+        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil deletado com sucesso.']);
     }
 }
