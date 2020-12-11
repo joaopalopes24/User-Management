@@ -34,7 +34,7 @@
                                 @endif
                                 <td>
                                     <div class="btn-group">
-                                        <a href="#"><button class="btn btn-warning"><i class="fa fa-align-justify"></i></button></a>
+                                        <a href="{{route('profiles.permissions.index',$var1->id)}}"><button class="btn btn-warning"><i class="fa fa-align-justify"></i></button></a>
                                         <a href="{{route('profiles.show',$var1->id)}}"><button class="btn btn-default"><i class="fa  fa-eye"></i></button></a>
                                         <a href="{{route('profiles.edit',$var1->id)}}"><button class="btn btn-info"><i class="fa fa-pencil"></i></button></a>
                                         <a><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-default{{$var1->id}}">

@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Method;
 use Illuminate\Http\Request;
 
-class CustomerController extends Controller
+class PermissionController extends Controller
 {
-    
     public function index()
     {
-        //
+        $dados = [
+            'methods' => Method::read(NULL,NULL,NULL),
+        ];
+
+        return view('permissions.permissions-index',$dados);
     }
 
     public function create()
@@ -22,21 +26,6 @@ class CustomerController extends Controller
         //
     }
 
-    public function show($id)
-    {
-        //
-    }
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-    
     public function destroy($id)
     {
         //

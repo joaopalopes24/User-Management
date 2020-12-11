@@ -3,11 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RequestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\Authorization;
 
@@ -51,15 +50,15 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
 
     Route::resource('profiles', ProfileController::class);
 
+    Route::resource('profiles.permissions', PermissionController::class)->only([
+        'index','create','store','destroy'
+    ]);
+
     Route::resource('menus', MenuController::class);
 
     Route::resource('items', ItemController::class);
     
     Route::resource('users', UserController::class);
-
-    Route::resource('requests', RequestController::class);
-
-    Route::resource('customers', CustomerController::class);
 
     /* Rotas que são excessões de permissão */
     Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware(Authorization::class)->name('home.access_denied');

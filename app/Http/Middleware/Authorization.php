@@ -14,7 +14,7 @@ class Authorization
     { 
         $route = FacadesRoute::currentRouteName();
 
-        $route_exist = Method::read($route);
+        $route_exist = Method::method_check($route);
 
         if(!$route_exist){
 

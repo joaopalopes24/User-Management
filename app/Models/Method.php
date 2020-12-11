@@ -11,9 +11,26 @@ class Method extends Model
 
     protected $table = 'tbl_methods';
 
-    public static function read($value)
+    public static function method_check($route)
     {       
-        $result = Method::where('route',$value)->count();
+        $result = Method::where('route',$route)->count();
+
+        return $result;
+    }
+
+    public static function read($class,$method,$route)
+    {       
+        $result = Method::select()
+            ->when($class, function ($query, $class) {
+                return $query->where('class', $class);
+            })
+            ->when($method, function ($query, $method) {
+                return $query->where('method', $method);
+            })
+            ->when($route, function ($query, $route) {
+                return $query->where('route', $route);
+            })
+            ->get();
 
         return $result;
     }
