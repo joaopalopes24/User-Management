@@ -5,6 +5,7 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
@@ -50,13 +51,11 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
 
     Route::resource('profiles', ProfileController::class);
 
-    Route::resource('profiles.permissions', PermissionController::class)->only([
-        'index','create','store','destroy'
-    ]);
+    Route::resource('profiles.permissions', PermissionController::class)->only(['index','create','store']);
 
     Route::resource('menus', MenuController::class);
 
-    Route::resource('items', ItemController::class);
+    Route::resource('menus.items', ItemController::class)->shallow();
     
     Route::resource('users', UserController::class);
 

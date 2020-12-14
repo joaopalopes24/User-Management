@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Method;
-use App\Models\Permission;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class PermissionController extends Controller
@@ -11,26 +11,18 @@ class PermissionController extends Controller
     public function index($id)
     {
         $dados = [
+            'profiles' => Profile::read($id,NULL,NULL),
             'classes' => Method::class(),
             'methods' => Method::read(NULL,NULL,NULL),
-            'permissions' => Permission::read($id,NULL),
         ];
 
         return view('permissions.permissions-index',$dados);
     }
 
-    public function create()
+    public function store(Request $request, $id)
     {
-        //
-    }
+        $dados = $request->all();
 
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        dd($id,$dados);
     }
 }

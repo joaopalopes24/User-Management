@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Profile extends Model
+class Item extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_profiles';
+    protected $table = 'tbl_menus_items';
 
-    public static function read($id,$name,$status)
+    public static function read($id,$name,$status,$menu,$method)
     {       
-        $result = Profile::select()
+        $result = Item::select()
             ->when($id, function ($query, $id) {
                 return $query->where('id', $id);
             })
@@ -23,34 +23,46 @@ class Profile extends Model
             ->when($status, function ($query, $status) {
                 return $query->where('status', $status);
             })
+            ->when($menu, function ($query, $menu) {
+                return $query->where('tbl_menus_id', $menu);
+            })
+            ->when($method, function ($query, $method) {
+                return $query->where('tbl_methods_id', $method);
+            })
             ->get();
         
         return $result;
     }
 
-    public static function create($dados)
+    public static function create($dados,$menu_id)
     {       
-        $value = new Profile;
+        $value = new Item;
 
         $value->name = $dados['name'];
+        $value->icon = $dados['icon'];
         $value->status = $dados['status'];
+        $value->tbl_menus_id = $menu_id;
+        $value->tbl_methods_id = $dados['method'];
         
         return $value->save();
     }
 
     public static function modernize($id,$dados)
     {
-        $value = Profile::find($id);
+        $value = Item::find($id);
 
         $value->name = $dados['name'];
+        $value->icon = $dados['icon'];
         $value->status = $dados['status'];
+        $value->tbl_menus_id = $dados['menu'];
+        $value->tbl_methods_id = $dados['method'];
         
         return $value->save();
     }
 
     public static function erase($id)
     {
-        $value = Profile::find($id);
+        $value = Item::find($id);
         
         return $value->delete();
     }

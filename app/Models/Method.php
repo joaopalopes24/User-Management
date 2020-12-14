@@ -37,12 +37,12 @@ class Method extends Model
 
     public static function create($controller,$action,$route)
     {       
-        $method = new Method;
+        $value = new Method;
 
-        $method->class = $controller;
-        $method->method = $action;
-        $method->route = $route;
+        $value->class = $controller;
+        $value->method = $action;
+        $value->route = $route;
 
-        return $method->save();
+        return $value->save();
     }
 }

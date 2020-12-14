@@ -19,26 +19,39 @@ class DatabaseSeeder extends Seeder
             '6' => 'destroy',
         ];
 
+        $resource1 = [
+            '0' => 'index',
+            '1' => 'create',
+            '2' => 'store',
+        ];
+
+        $resource2 = [
+            '0' => 'show',
+            '1' => 'edit',
+            '2' => 'update',
+            '3' => 'destroy',
+        ];
+
         DB::table('tbl_profiles')->insert([
             'name' => 'Administrador Master',
             'status' => '$2y$10rH@g',
         ]);
 
         DB::table('tbl_methods')->insert([
-            'class' => 'HomeController',
+            'class' => 'Home',
             'method' => 'index',
             'route' => 'home.index',
         ]);
 
         DB::table('tbl_methods')->insert([
-            'class' => 'HomeController',
+            'class' => 'Home',
             'method' => 'detailed',
             'route' => 'home.detailed',
         ]);
 
         foreach ($resource as $var) {
             DB::table('tbl_methods')->insert([
-                'class' => 'ProfileController',
+                'class' => 'Profile',
                 'method' => $var,
                 'route' => 'profiles.' . $var,
             ]);
@@ -46,15 +59,23 @@ class DatabaseSeeder extends Seeder
 
         foreach ($resource as $var) {
             DB::table('tbl_methods')->insert([
-                'class' => 'MenuController',
+                'class' => 'Menu',
                 'method' => $var,
                 'route' => 'menus.' . $var,
             ]);
         }
 
-        foreach ($resource as $var) {
+        foreach ($resource1 as $var) {
             DB::table('tbl_methods')->insert([
-                'class' => 'ItemController',
+                'class' => 'Item',
+                'method' => $var,
+                'route' => 'menus.items.' . $var,
+            ]);
+        }
+
+        foreach ($resource2 as $var) {
+            DB::table('tbl_methods')->insert([
+                'class' => 'Item',
                 'method' => $var,
                 'route' => 'items.' . $var,
             ]);
@@ -62,11 +83,23 @@ class DatabaseSeeder extends Seeder
 
         foreach ($resource as $var) {
             DB::table('tbl_methods')->insert([
-                'class' => 'UserController',
+                'class' => 'User',
                 'method' => $var,
                 'route' => 'users.' . $var,
             ]);
         }
+
+        DB::table('tbl_methods')->insert([
+            'class' => 'Permission',
+            'method' => 'index',
+            'route' => 'profiles.permissions.index',
+        ]);
+
+        DB::table('tbl_methods')->insert([
+            'class' => 'Permission',
+            'method' => 'store',
+            'route' => 'profiles.permissions.store',
+        ]);
 
         DB::table('tbl_menus')->insert([
             'name' => 'Página Inicial',
@@ -120,7 +153,7 @@ class DatabaseSeeder extends Seeder
             'tbl_methods_id' => '24',
         ]);
 
-        for ($i = 1; $i <= 30; $i++) {
+        for ($i = 1; $i <= 32; $i++) {
             DB::table('tbl_permissions')->insert([
                 'tbl_profiles_id' => '1',
                 'tbl_methods_id' => $i,

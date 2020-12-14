@@ -60,37 +60,37 @@ class User extends Authenticatable
 
     public static function create($dados)
     {       
-        $user = new User;
+        $value = new User;
 
-        $user->name = $dados['name'];
-        $user->cpf = $dados['cpf'];
-        $user->number = $dados['number'];
-        $user->email = $dados['email'];
-        $user->password = Hash::make('nova@123*');
-        $user->status = $dados['status'];
-        $user->tbl_profiles_id = $dados['profile'];
+        $value->name = $dados['name'];
+        $value->cpf = $dados['cpf'];
+        $value->number = $dados['number'];
+        $value->email = $dados['email'];
+        $value->password = Hash::make('nova@123*');
+        $value->status = $dados['status'];
+        $value->tbl_profiles_id = $dados['profile'];
         
-        return $user->save();
+        return $value->save();
     }
 
     public static function modernize($id,$dados)
     {
-        $user = User::find($id);
+        $value = User::find($id);
 
-        $user->name = $dados['name'];
-        $user->cpf = $dados['cpf'];
-        $user->number = $dados['number'];
-        $user->email = $dados['email'];
-        $user->status = $dados['status'];
-        $user->tbl_profiles_id = $dados['profile'];
+        $value->name = $dados['name'];
+        $value->cpf = $dados['cpf'];
+        $value->number = $dados['number'];
+        $value->email = $dados['email'];
+        $value->status = $dados['status'];
+        $value->tbl_profiles_id = $dados['profile'];
         
-        return $user->save();
+        return $value->save();
     }
 
     public static function erase($id)
     {
-        $user = User::find($id);
+        $value = User::find($id);
         
-        return $user->delete();
+        return $value->delete();
     }
 }

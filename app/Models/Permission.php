@@ -12,11 +12,11 @@ class Permission extends Model
 
     protected $table = 'tbl_permissions';
 
-    public static function permission_check($value)
+    public static function permission_check($id,$route)
     {       
-        $result = Permission::where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
+        $result = Permission::where('tbl_permissions.tbl_profiles_id', $id)
             ->join('tbl_methods','tbl_permissions.tbl_methods_id','tbl_methods.id')
-            ->where('tbl_methods.route', $value)
+            ->where('tbl_methods.route', $route)
             ->count();
 
         return $result;
@@ -46,20 +46,6 @@ class Permission extends Model
             ->where('tbl_menus_items.status', '$2y$10rH@g')
             ->join('tbl_menus','tbl_menus_items.tbl_menus_id', 'tbl_menus.id')
             ->where('tbl_menus.status', '$2y$10rH@g')
-            ->get();
-
-        return $result;
-    }
-
-    public static function read($profile,$method)
-    {       
-        $result = Permission::select()
-            ->when($profile, function ($query, $profile) {
-                return $query->where('tbl_profiles_id', $profile);
-            })
-            ->when($method, function ($query, $method) {
-                return $query->where('tbl_methods_id', $method);
-            })
             ->get();
 
         return $result;

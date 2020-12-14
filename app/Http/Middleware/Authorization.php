@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Models\Permission;
 use App\Models\Method;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route as FacadesRoute;
 
 class Authorization
@@ -22,14 +23,14 @@ class Authorization
 
             list($va1,$va2,$va3,$controller_action) = explode('\\', $way);
 
-            list($controller, $action) = explode('@', $controller_action);
+            list($controller, $action) = explode('Controller@', $controller_action);
 
             Method::create($controller,$action,$route);
 
             return redirect()->route('home.access_denied');
         }
 
-        $permission = Permission::permission_check($route);
+        $permission = Permission::permission_check(Auth::user()->tbl_profiles_id,$route);
         
         if(!$permission){
             return redirect()->route('home.access_denied');
