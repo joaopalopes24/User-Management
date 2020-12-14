@@ -35,7 +35,7 @@
 
 <?php use App\Models\Permission; $menus = Permission::permission_menu(); $items = Permission::permission_item(); ?>
 
-<body class="hold-transition skin-custom sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
             <a href="#" class="logo">

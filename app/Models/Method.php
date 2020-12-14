@@ -11,9 +11,9 @@ class Method extends Model
 
     protected $table = 'tbl_methods';
 
-    public static function method_check($route)
+    public static function class()
     {       
-        $result = Method::where('route',$route)->count();
+        $result = Method::select('class')->distinct()->get();
 
         return $result;
     }
