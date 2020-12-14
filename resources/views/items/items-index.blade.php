@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Itens do Menu')
+@section('title', 'Itens - '.$menu->first()->name)
 @section('subtitle', 'Status')
 @section('conteudo')
 <!-- Início Conteúdo -->
@@ -8,7 +8,7 @@
     <div class="box box-primary">
         <div class="box-header">
             <a href="{{route('menus.index')}}"><button class="btn btn-danger">Voltar</button></a>
-            <a href="{{route('menus.items.create',$menu)}}"><button class="btn btn-primary">Novo Item</button></a>
+            <a href="{{route('menus.items.create',$menu->first()->id)}}"><button class="btn btn-primary">Novo Item</button></a>
         </div>
         <div class="box-body">
         <div class="table-responsive">

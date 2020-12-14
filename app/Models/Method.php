@@ -18,9 +18,12 @@ class Method extends Model
         return $result;
     }
 
-    public static function read($class,$method,$route)
+    public static function read($id,$class,$method,$route)
     {       
         $result = Method::select()
+            ->when($id, function ($query, $id) {
+                return $query->where('id', $id);
+            })
             ->when($class, function ($query, $class) {
                 return $query->where('class', $class);
             })

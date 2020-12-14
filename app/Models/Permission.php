@@ -50,4 +50,42 @@ class Permission extends Model
 
         return $result;
     }
+
+    public static function read($id,$profile,$method,$route)
+    {       
+        $result = Permission::select()
+            ->when($id, function ($query, $id) {
+                return $query->where('id', $id);
+            })
+            ->when($profile, function ($query, $profile) {
+                return $query->where('tbl_profiles_id', $profile);
+            })
+            ->join('tbl_methods','tbl_permissions.tbl_methods_id','tbl_methods.id')
+            ->when($method, function ($query, $method) {
+                return $query->where('tbl_methods.id', $method);
+            })
+            ->when($route, function ($query, $route) {
+                return $query->where('tbl_methods.route', $route);
+            })
+            ->get();
+
+        return $result;
+    }
+
+    public static function create($profile,$method)
+    {       
+        $value = new Permission();
+
+        $value->tbl_profiles_id = $profile;
+        $value->tbl_methods_id = $method;
+
+        return $value->save();
+    }
+
+    public static function erase($id)
+    {       
+        $value = Permission::find($id);
+        
+        return $value->delete();
+    }
 }

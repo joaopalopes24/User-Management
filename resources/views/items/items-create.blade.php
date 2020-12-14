@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Menus')
+@section('title', 'Item - '.$menu->first()->name)
 @section('subtitle', 'Cadastrar')
 @section('conteudo')
 <!-- Início Conteúdo -->
@@ -8,7 +8,7 @@
         <div class="box-header with-border">
             <h3 class="box-title">Dados do Item</h3>
         </div>
-        <form method="post" class="needs-validation" action="{{route('menus.items.store',$menu)}}" novalidate>
+        <form method="post" class="needs-validation" action="{{route('menus.items.store',$menu->first()->id)}}" novalidate>
             @CSRF
             <div class="box-body">
                 <div class="row col-md-12">
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="{{route('menus.items.index',$menu)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
+                <a href="{{route('menus.items.index',$menu->first()->id)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
                 <button type="submit" class="btn btn-success">Concluir</button>
                 <!-- Início do Ícones -->
                 <div class="tab-content">
