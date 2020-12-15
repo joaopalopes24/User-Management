@@ -42,11 +42,13 @@ class PermissionController extends Controller
 
         foreach($permissions as $var1){
             if(!array_key_exists($var1->tbl_methods_id,$values)){
-                $value = Permission::read(NULL,NULL,$var1->tbl_methods_id);
+                $value = Permission::read(NULL,$id,$var1->tbl_methods_id);
                 Permission::erase($value->first()->id);
             }
         }
 
-        return redirect()->route('profiles.index')->withErrors(['success' => 'Permissões alteradas com sucesso.']);
+        $profile = Profile::read($id,NULL,NULL);
+
+        return redirect()->route('profiles.index')->withErrors(['success' => 'Permissões do perfil - '.$profile->first()->name.' - alteradas com sucesso.']);
     }
 }
