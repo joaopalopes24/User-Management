@@ -26,11 +26,11 @@
                                         @if($var2->class == $var1->class)
                                             @if(Permission::permission_check($profiles->first()->id,$var2->route))
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="{{ $var2->route }}" checked> {{ $var2->method }} </label>
+                                                    <label><input type="checkbox" name="{{ $var2->id }}" checked> {{ $var2->method }} </label>
                                                 </div>
                                             @else
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="{{ $var2->route }}"> {{ $var2->method }} </label>
+                                                    <label><input type="checkbox" name="{{ $var2->id }}"> {{ $var2->method }} </label>
                                                 </div>
                                             @endif
                                         @endif

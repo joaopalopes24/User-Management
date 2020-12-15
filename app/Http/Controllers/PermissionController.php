@@ -24,39 +24,29 @@ class PermissionController extends Controller
     {
         $values = $request->except(['_token']);
 
-        $permissions = Permission::read(NULL,$id,NULL,NULL);
+        $permissions = Permission::read(NULL,$id,NULL);
 
-        foreach($permissions as $var1){
-            $var1->route = str_replace(".","_",$var1->route);
-        }
-
-        while($var2 = current($values)){
+        while(current($values)){
             $answer = 0;
             foreach($permissions as $var1){
-                if(key($values) == $var1->route){
+                if(key($values) == $var1->tbl_methods_id){
                     $answer = 1;
                     break;
                 }
             }
             if(!$answer){
-                $route_correct = str_replace("_",".",key($values));
-                $method = Method::read(NULL,NULL,NULL,$route_correct);
-                Permission::create($id,$method->first()->id);
+                Permission::create($id,key($values));
             }
             next($values);
         }
 
         foreach($permissions as $var1){
-            if(!array_key_exists($var1->route,$values)){
-                $route_correct = str_replace("_",".",$var1->route);
-                $value = Permission::read(NULL,NULL,NULL,$route_correct);
-                echo '<br>';
-                print_r('Deletar permissao = '.$route_correct.' = '.$value->first()->id);
-                dd($value);
+            if(!array_key_exists($var1->tbl_methods_id,$values)){
+                $value = Permission::read(NULL,NULL,$var1->tbl_methods_id);
                 Permission::erase($value->first()->id);
             }
         }
 
-        //return redirect()->route('profiles.index')->withErrors(['success' => 'Permissões alteradas com sucesso.']);
+        return redirect()->route('profiles.index')->withErrors(['success' => 'Permissões alteradas com sucesso.']);
     }
 }

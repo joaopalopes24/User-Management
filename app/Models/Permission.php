@@ -51,7 +51,7 @@ class Permission extends Model
         return $result;
     }
 
-    public static function read($id,$profile,$method,$route)
+    public static function read($id,$profile,$method)
     {       
         $result = Permission::select()
             ->when($id, function ($query, $id) {
@@ -60,12 +60,8 @@ class Permission extends Model
             ->when($profile, function ($query, $profile) {
                 return $query->where('tbl_profiles_id', $profile);
             })
-            ->join('tbl_methods','tbl_permissions.tbl_methods_id','tbl_methods.id')
             ->when($method, function ($query, $method) {
-                return $query->where('tbl_methods.id', $method);
-            })
-            ->when($route, function ($query, $route) {
-                return $query->where('tbl_methods.route', $route);
+                return $query->where('tbl_methods_id', $method);
             })
             ->get();
 
