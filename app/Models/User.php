@@ -87,6 +87,15 @@ class User extends Authenticatable
         return $value->save();
     }
 
+    public static function change($id,$password)
+    {
+        $value = User::find($id);
+
+        $value->password = Hash::make($password);
+        
+        return $value->save();
+    }
+
     public static function erase($id)
     {
         $value = User::find($id);

@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTblCustomersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('tbl_customers', function (Blueprint $table) {
@@ -33,11 +28,6 @@ class CreateTblCustomersTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tbl_customers');

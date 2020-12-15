@@ -6,12 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTblProfilesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+        public function up()
     {
         Schema::create('tbl_profiles', function (Blueprint $table) {
             $table->id();
@@ -22,11 +17,6 @@ class CreateTblProfilesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tbl_profiles');

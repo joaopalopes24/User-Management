@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTblMenusItemsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('tbl_menus_items', function (Blueprint $table) {
@@ -28,11 +23,6 @@ class CreateTblMenusItemsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('tbl_menus_items');

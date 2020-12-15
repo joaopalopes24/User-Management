@@ -10,15 +10,19 @@
         </div>
             <div class="box-body">
                 <div class="row col-md-12">
-                    <div class="col-sm-12 col-md-5 form-group">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label>Nome</label>
                     <input class="form-control" value="{{$menus->first()->name}}" disabled>
                     </div>
-                    <div class="col-sm-6 col-md-4 form-group">
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label>Ícone</label>
                         <input class="form-control" value="{{$menus->first()->icon}}" disabled>
                     </div>
-                    <div class="col-sm-6 col-md-3 form-group">
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label>Status</label>
                         <input class="form-control" value="<?php if($menus->first()->status == '$2y$10rH@g'){echo 'Ativo';}elseif($menus->first()->status == '.fZEW.57&!'){echo 'Inativo';}else{echo 'Sem Status';}?>" disabled>
                     </div>

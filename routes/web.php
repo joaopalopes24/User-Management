@@ -39,6 +39,8 @@ Route::prefix('application')->middleware('guest')->group(function () {
     Route::post('login', [LoginController::class, 'login'])->name('login.login');
 
     Route::get('login/recover', [LoginController::class, 'recover'])->name('login.recover');
+
+    Route::post('login/recover', [LoginController::class, 'recover_do'])->name('login.recover)do');
 });
 /* ---------- FIM ---------- */
 
@@ -60,6 +62,10 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
     Route::resource('users', UserController::class);
 
     /* Rotas que são excessões de permissão */
+    Route::get('home/change_password', [HomeController::class, 'change_password'])->withoutMiddleware(Authorization::class)->name('home.change_password');
+
+    Route::post('home/change_password', [HomeController::class, 'change_password_do'])->withoutMiddleware(Authorization::class)->name('home.change_password_do');
+
     Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware(Authorization::class)->name('home.access_denied');
     
     Route::get('login/logout', [LoginController::class, 'logout'])->withoutMiddleware(Authorization::class)->name('login.logout');

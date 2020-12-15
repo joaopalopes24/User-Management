@@ -10,11 +10,13 @@
         </div>
             <div class="box-body">
                 <div class="row col-md-12">
-                    <div class="col-sm-6 form-group">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label>Nome</label>
                     <input class="form-control" value="{{$profiles->first()->name}}" disabled>
                     </div>
-                    <div class="col-sm-6 form-group">
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label>Status</label>
                         <input class="form-control" value="<?php if($profiles->first()->status == '$2y$10rH@g'){echo 'Ativo';}elseif($profiles->first()->status == '.fZEW.57&!'){echo 'Inativo';}else{echo 'Sem Status';}?>" disabled>
                     </div>

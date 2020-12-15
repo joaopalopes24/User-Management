@@ -13,21 +13,25 @@
             @CSRF
             <div class="box-body">
                 <div class="row col-md-12">
-                    <div class="col-sm-12 col-md-5 form-group">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label for="name">Nome</label>
                         <input type="text" class="form-control" name="name" id="name" placeholder="Nome do Menu" value="{{$menus->first()->name}}" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-4 form-group">
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label for="icon">Ícone</label>
                         <input type="text" class="form-control" name="icon" id="icon" placeholder="Ícone de Representação" value="{{$menus->first()->icon}}" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3 form-group">
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label for="status">Status</label>
                         <select class="form-control custom-select" name="status" id="status" required>
                             <option value="">Status do Usuário</option>

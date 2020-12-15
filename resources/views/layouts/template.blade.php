@@ -64,7 +64,7 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Dados</a>
+                                        <a href="{{route('home.change_password')}}" class="btn btn-default btn-flat">Alterar Senha</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{route('login.logout')}}" class="btn btn-danger btn-flat">Logout</a>

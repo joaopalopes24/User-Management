@@ -32,6 +32,11 @@ class LoginController extends Controller
         return view('recover');
     }
 
+    public function recover_do()
+    {
+        return view('recover');
+    }
+
     public function logout()
     {
         Auth::logout();
