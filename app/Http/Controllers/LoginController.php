@@ -19,11 +19,11 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)){
             if(Auth::user()->status == '.fZEW.57&!'){
                 Auth::logout();
-                return redirect()->route('login.index')->withErrors(['status_block' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
+                return redirect()->route('login.index')->withErrors(['alert' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
             }
             return redirect()->route('home.index');
         } else {
-            return redirect()->route('login.index')->withErrors(['login_incorrect' => 'Usuário e/ou Senha Incorretos.']);
+            return redirect()->route('login.index')->withErrors(['failed' => 'Usuário e/ou Senha Incorretos.']);
         }
     }
 

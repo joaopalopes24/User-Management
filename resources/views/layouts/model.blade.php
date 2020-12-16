@@ -31,17 +31,17 @@
       </a>
     </div>
 
-    @if($errors->has('login_incorrect'))
+    @if($errors->has('failed'))
         <div class="alert alert-danger alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-          <strong>{{ $errors->first('login_incorrect') }}</strong>
+          <strong>{{ $errors->first('failed') }}</strong>
         </div>
     @endif
 
-    @if($errors->has('status_block'))
+    @if($errors->has('alert'))
         <div class="alert alert-warning alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
-          <strong>{{ $errors->first('status_block') }}</strong>
+          <strong>{{ $errors->first('alert') }}</strong>
         </div>
     @endif
 
