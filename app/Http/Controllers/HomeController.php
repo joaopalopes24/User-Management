@@ -40,7 +40,7 @@ class HomeController extends Controller
                 return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha digitadas Divergentes.']);
             }
         } else {
-            return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha Atual está incorreto.']);
+            return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha Atual está incorreta.']);
         }
     }
 
