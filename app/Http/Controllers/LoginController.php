@@ -22,6 +22,7 @@ class LoginController extends Controller
                 Auth::logout();
                 return redirect()->route('login.index')->withErrors(['alert' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
             }
+            Session::regenerateToken();
             return redirect()->route('home.index');
         } else {
             return redirect()->route('login.index')->withErrors(['failed' => 'Usuário e/ou Senha Incorretos.']);

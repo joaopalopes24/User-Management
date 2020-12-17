@@ -3,6 +3,9 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
+use Illuminate\Session\DatabaseSessionHandler;
+use Illuminate\Support\Facades\Session;
+use SessionHandler;
 
 class Authenticate extends Middleware
 {
@@ -15,6 +18,14 @@ class Authenticate extends Middleware
     protected function redirectTo($request)
     {
         if (! $request->expectsJson()) {
+
+            /* if ((time() - Session::activity()) > (Config::get('session.lifetime') * 60))
+            {
+            // Session expired
+            } */
+
+            //dd((Session::getId()));
+
             return route('login.index');
         }
     }

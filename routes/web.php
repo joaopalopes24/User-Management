@@ -55,7 +55,7 @@ Route::prefix('application')->middleware('auth')->group(function () {
 
         Route::resource('profiles', ProfileController::class);
 
-        Route::resource('profiles.permissions', PermissionController::class)->only(['index','create','store']);
+        Route::resource('profiles.permissions', PermissionController::class)->only(['index','store']);
 
         Route::resource('menus', MenuController::class);
 
@@ -63,7 +63,7 @@ Route::prefix('application')->middleware('auth')->group(function () {
         
         Route::resource('users', UserController::class);
     });
-    
+
     /* Rotas que são excessões de permissão */
     Route::get('home/change_password', [HomeController::class, 'change_password'])->name('home.change_password');
 
