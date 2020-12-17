@@ -45,7 +45,7 @@ Route::prefix('application')->middleware('guest')->group(function () {
 /* ---------- FIM ---------- */
 
 /* Essa rotas serão redirecionadas para o LOGIN caso ele não esteja logado ----- Aqui verificamos a permissão */
-Route::prefix('application')->middleware('auth',Authorization::class)->group(function () {
+Route::prefix('application')->middleware('auth','permission')->group(function () {
 
     Route::get('home', [HomeController::class, 'index'])->name('home.index');
 
@@ -62,13 +62,13 @@ Route::prefix('application')->middleware('auth',Authorization::class)->group(fun
     Route::resource('users', UserController::class);
 
     /* Rotas que são excessões de permissão */
-    Route::get('home/change_password', [HomeController::class, 'change_password'])->withoutMiddleware(Authorization::class)->name('home.change_password');
+    Route::get('home/change_password', [HomeController::class, 'change_password'])->withoutMiddleware('permission')->name('home.change_password');
 
-    Route::post('home/change_password', [HomeController::class, 'change_password_do'])->withoutMiddleware(Authorization::class)->name('home.change_password_do');
+    Route::post('home/change_password', [HomeController::class, 'change_password_do'])->withoutMiddleware('permission')->name('home.change_password_do');
 
-    Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware(Authorization::class)->name('home.access_denied');
+    Route::get('home/access_denied', [HomeController::class, 'access_denied'])->withoutMiddleware('permission')->name('home.access_denied');
     
-    Route::get('login/logout', [LoginController::class, 'logout'])->withoutMiddleware(Authorization::class)->name('login.logout');
+    Route::get('login/logout', [LoginController::class, 'logout'])->withoutMiddleware('permission')->name('login.logout');
     /* ---------- FIM ---------- */
 });
 /* ---------- FIM ---------- */

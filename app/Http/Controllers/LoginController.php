@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -39,8 +40,8 @@ class LoginController extends Controller
 
     public function logout()
     {
-        session()->flush();
-        session()->regenerate();
+        Session::flush();
+        Session::regenerate();
 
         Auth::logout();
 
