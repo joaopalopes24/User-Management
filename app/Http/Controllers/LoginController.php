@@ -10,6 +10,9 @@ class LoginController extends Controller
 {
     public function index()
     {
+        if(Session::has('expired')){
+            return redirect()->route('login.index')->withErrors(['failed' => 'Sessão Expirada. Favor realizar novamente o login.']);
+        }
         return view('login');
     }
 
@@ -22,7 +25,7 @@ class LoginController extends Controller
                 Auth::logout();
                 return redirect()->route('login.index')->withErrors(['alert' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
             }
-            Session::regenerateToken();
+            Session::migrate();
             return redirect()->route('home.index');
         } else {
             return redirect()->route('login.index')->withErrors(['failed' => 'Usuário e/ou Senha Incorretos.']);
