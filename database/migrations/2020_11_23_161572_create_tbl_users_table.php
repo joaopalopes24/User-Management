@@ -16,10 +16,10 @@ class CreateTblUsersTable extends Migration
             $table->string('password');
             $table->string('cpf',45)->unique();
             $table->string('status',10);
-            $table->rememberToken();
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
-            $table->timestamp('email_verified_at')->nullable();
+            //$table->timestamp('email_verified_at')->nullable();
+            //$table->rememberToken();
             $table->unsignedBigInteger('tbl_profiles_id')->nullable();
 
             $table->foreign('tbl_profiles_id')->references('id')->on('tbl_profiles')->onDelete('set null');

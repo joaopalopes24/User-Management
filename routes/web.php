@@ -9,7 +9,6 @@ use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Middleware\Authorization;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +39,11 @@ Route::prefix('application')->middleware('guest')->group(function () {
 
     Route::get('login/recover', [LoginController::class, 'recover'])->name('login.recover');
 
-    Route::post('login/recover', [LoginController::class, 'recover_do'])->name('login.recover)do');
+    Route::post('login/recover', [LoginController::class, 'recover_do'])->name('login.recover_do');
+
+    Route::get('login/reset-password/{token}', [LoginController::class, 'reset'])->name('password.reset');
+
+    Route::post('login/reset-password', [LoginController::class, 'reset_do'])->name('login.reset_do');
 });
 /* ---------- FIM ---------- */
 

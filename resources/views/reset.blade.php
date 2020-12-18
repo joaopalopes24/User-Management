@@ -3,7 +3,9 @@
 <!-- Início Conteúdo -->
 <div class="login-box-body">
     <p class="login-box-msg">Entre com seu e-mail e senha</p>
-    <form class="needs-validation" action="#" novalidate>
+    <form method="post" class="needs-validation" action="{{route('login.reset_do')}}" novalidate>
+        @CSRF
+        <input type="hidden" name="token" value="{{$token}}">
         <div class="form-group has-feedback">
             <input type="email" name='email' class="form-control" placeholder="E-mail" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -12,14 +14,14 @@
             </div>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" name='novasenha1' class="form-control" placeholder="Nova Senha" required>
+            <input type="password" name='password' class="form-control" placeholder="Nova Senha" minlength="8" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             <div class="invalid-feedback">
                 Campo Obrigatório
             </div>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" name='novasenha2' class="form-control" placeholder="Confirmar Nova Senha" required>
+            <input type="password" name='password_confirmation' class="form-control" placeholder="Confirmar Nova Senha" minlength="8" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             <div class="invalid-feedback">
                 Campo Obrigatório

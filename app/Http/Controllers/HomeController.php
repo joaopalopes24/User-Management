@@ -29,12 +29,12 @@ class HomeController extends Controller
 
         $credentials = [
             'email' => Auth::user()->email,
-            'password' => $dados['password'],
+            'password' => $dados['password_old'],
         ];
 
         if(Auth::attempt($credentials)){
-            if($dados['new_password'] == $dados['new_password_2']){
-                User::change(Auth::user()->id,$dados['new_password']);
+            if($dados['password'] == $dados['password_confirmation']){
+                User::change(Auth::user()->id,$dados['password']);
                 return redirect()->route('home.change_password')->withErrors(['success' => 'Senha alterada com Sucesso.']);
             } else {
                 return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha digitadas Divergentes.']);

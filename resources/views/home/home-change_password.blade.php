@@ -36,37 +36,28 @@
                     </div>
                     <div class="row col-md-12">
                         <div class="col-sm-12 col-md-5 col-lg-4 form-group">
-                            <label for="password">Senha Atual</label>
-                            <input type="password" class="form-control" name="password" id="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Senha Atual" required>
+                            <label for="password_old">Senha Atual</label>
+                            <input type="password" class="form-control" name="password_old" id="password_old" placeholder="Senha Atual" minlength="8" required>
                             <div class="invalid-feedback">
-                                Mínimo 8 Caracteres.<br>
-                                Pelo menos 1 letra.<br>
-                                Pelo menos 1 número.<br>
-                                Pelo menos 1 caractere especial.
+                                Campo Obrigatório
                             </div>
                         </div>
                     </div>
                     <div class="row col-md-12">
                         <div class="col-sm-12 col-md-5 col-lg-4 form-group">
-                            <label for="new_password">Nova Senha</label>
-                            <input type="password" class="form-control" name="new_password" id="new_password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Nova Senha" required>
+                            <label for="password">Nova Senha</label>
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Nova Senha" minlength="8" required>
                             <div class="invalid-feedback">
-                                Mínimo 8 Caracteres.<br>
-                                Pelo menos 1 letra.<br>
-                                Pelo menos 1 número.<br>
-                                Pelo menos 1 caractere especial.
+                                Campo Obrigatório
                             </div>
                         </div>
                     </div>
                     <div class="row col-md-12">
                         <div class="col-sm-12 col-md-5 col-lg-4 form-group">
-                            <label for="new_password_2">Confirmar Senha</label>
-                            <input type="password" class="form-control" name="new_password_2" id="new_password_2" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" placeholder="Confirmar Senha" required>
+                            <label for="password_confirmation">Confirmar Senha</label>
+                            <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Senha" minlength="8" required>
                             <div class="invalid-feedback">
-                                Mínimo 8 Caracteres.<br>
-                                Pelo menos 1 letra.<br>
-                                Pelo menos 1 número.<br>
-                                Pelo menos 1 caractere especial.
+                                Campo Obrigatório
                             </div>
                         </div>
                     </div>

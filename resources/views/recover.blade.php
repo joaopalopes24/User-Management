@@ -3,7 +3,8 @@
 <!-- Início Conteúdo -->
 <div class="login-box-body">
     <p class="login-box-msg">Recuperação de Senha</p>
-    <form class="needs-validation" action="#" novalidate>
+    <form method="post" class="needs-validation" action="{{route('login.recover_do')}}" novalidate>
+        @CSRF
         <div class="form-group has-feedback">
             <input type="email" name='email' class="form-control" placeholder="E-mail" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>

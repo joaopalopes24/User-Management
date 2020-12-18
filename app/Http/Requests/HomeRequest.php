@@ -14,9 +14,9 @@ class HomeRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required',
-            'new_password' => 'required',
-            'new_password_2' => 'required',
+            'password_old' => 'required|min:8',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|min:8',
         ];
     }
 }
