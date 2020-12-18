@@ -83,22 +83,22 @@
             <section class="sidebar">
                 <ul class="sidebar-menu" data-widget="tree">
                     @foreach ($menus as $var1)
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa <?php echo "$var1->icon"; ?>"></i>
-                            <span> {{$var1->name}}</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            @foreach ($items as $var2)
-                            @if($var2->menu_id == $var1->id)
-                            <li><a href="{{route($var2->route)}}"><i class="fa <?php echo "$var2->icon"; ?>"></i> {{$var2->name}}</a></li>
-                            @endif
-                            @endforeach
-                        </ul>
-                    </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa <?php echo "$var1->icon"; ?>"></i>
+                                <span> {{$var1->name}}</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                @foreach ($items as $var2)
+                                    @if($var2->menu_id == $var1->id)
+                                        <li><a href="{{route($var2->route)}}"><i class="fa <?php echo "$var2->icon"; ?>"></i> {{$var2->name}}</a></li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </li>
                     @endforeach
                 </ul>
             </section>

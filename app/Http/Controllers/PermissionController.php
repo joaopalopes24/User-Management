@@ -24,27 +24,21 @@ class PermissionController extends Controller
     {
         $values = $request->except(['_token']);
 
-        $permissions = Permission::read(NULL,$id,NULL);
+        $permissions = Permission::read(NULL,$id,NULL)->toArray();
 
-        while(current($values)){
-            $answer = 0;
-            foreach($permissions as $var1){
-                if(key($values) == $var1->tbl_methods_id){
-                    $answer = 1;
-                    break;
-                }
-            }
-            if(!$answer){
+        while($var = current($values)){
+            if(array_search(key($values),array_column($permissions,'tbl_methods_id')) === false){
                 Permission::create($id,key($values));
             }
             next($values);
         }
 
-        foreach($permissions as $var1){
-            if(!array_key_exists($var1->tbl_methods_id,$values)){
-                $value = Permission::read(NULL,$id,$var1->tbl_methods_id);
+        while($var = current($permissions)){
+            if(!array_key_exists($var['tbl_methods_id'],$values)){
+                $value = Permission::read(NULL,$id,$var['tbl_methods_id']);
                 Permission::erase($value->first()->id);
             }
+            next($permissions);
         }
 
         $profile = Profile::read($id,NULL,NULL);
