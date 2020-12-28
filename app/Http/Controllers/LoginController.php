@@ -52,7 +52,7 @@ class LoginController extends Controller
     
         return $status === Password::RESET_LINK_SENT
             ? redirect()->route('login.index')->withErrors(['success' => 'E-mail para redefinição de senha enviado com sucesso.'])
-            : redirect()->route('login.recover')->withErrors(['failed' => 'E-mail não localizado.']);
+            : redirect()->route('login.recover')->withErrors(['failed' => 'Erro ao encaminhar redefinição de senha.']);
     }
 
     public function reset($token)
