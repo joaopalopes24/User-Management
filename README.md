@@ -1,127 +1,61 @@
-# Sistema Ouvidoria Unimontes
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
-## Sobre este projeto
+<p align="center">
+<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-- Data Inicial: 30/11/2020
-- Desenvolvedor: João Pedro Lopes
-- Status: `Em Andamento`
-- Data de Conclusão: 
+## About Laravel
 
-### Requisitos
-- PHP >= 7.3
-- Laravel = 8
-- Composer v1.10.3
-- Mysql v7.4.11
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-### Como instalar
-- Clone o projeto
-    ```bash
-        git clone https://gitlab.com/dti-desenvolvimento/sistema-ouvidoria.git
-    ```
-- Instale as dependências
-    ```bash
-        composer install --no-scripts
-    ```
-- Copie o arquivo .env.example
-    - Se estiver utilizando linux: cp .env.example .env
-    - Se estiver no windows abra o arquivo em um editor de código e o salve novamente como .env
-- Crie uma nova chave para a aplicação
-    ```bash
-        php artisan key:generate
-    ```
-- Atualize as configuração do banco de dados
-    - config > database.php 
-    ```php
-        'database' => env('DB_DATABASE', 'database'),
-        'username' => env('DB_USERNAME', 'username'),
-        'password' => env('DB_PASSWORD', 'senha'),
-    ```            
-- Rode as Migrations com os Seeder
-    ```bash
-        php artisan migrate --seed
-    ```
-- (Opcional) Faça upload do diretório para o servidor de desenvolvimento através do WinSCP.
-    - Configure a extensão SFTP do seu VSCode.
-        - Se não tiver a extensão instale no seu vscode.
-        - Pressione F1 no projeto aberto no vscode e selecione SFTP: Config.
-        - Preencha o arquivo sftp.json com os seguintes dados:
-        ```json
-        {
-            "name": "Sistema Ouvidoria Unimontes",
-            "host": "10.0.70.142",
-            "protocol": "ftp",
-            "port": 21,
-            "username": "seu_usuário_do_winSCP",
-            "remotePath": "/php5.6/dev/seu_diretorio/sistema-ouvidoria",
-            "password": "sua_senha",
-            "uploadOnSave": true
-        }
-        ``` 
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-## Pacotes e Bibliotecas Utilizadas
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-- [laravelcollective html v5.4](https://laravelcollective.com/docs/5.4/html)
-- [LaravelLegends/pt-br-validator](https://github.com/LaravelLegends/pt-br-validator)
-- [maatwebsite/excel](https://www.webslesson.info/2018/05/how-to-export-mysql-data-to-excel-file-in-laravel.html)
-- [barryvdh/laravel-dompdf](https://github.com/barryvdh/laravel-dompdf)
-- [Kit UI Argon Design System](https://www.creative-tim.com/product/argon-design-system)
-- [Argon Dashboard](https://demos.creative-tim.com/argon-dashboard/index.html)
-- [Jquery Validate](http://jqueryvalidation.org/)
-- [Bootstrap wizard](https://www.creative-tim.com/product/bootstrap-wizard)
-- [Bootstrap v4.3](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
-- [html5shiv](https://github.com/aFarkas/html5shiv)
-- [font-awesome v4.7](https://fontawesome.com/v4.7.0/icons/)
-- [Headroom js](https://wicky.nillia.ms/headroom.js/)
-- [Chart js](https://www.chartjs.org/)
-- [Jquery filer v1.3.0](https://gerardbalaoro.github.io/jQuery.filer/)
-- [Moment Js](https://github.com/moment/moment)
-- [Tempus Dominus](https://tempusdominus.github.io/bootstrap-4/)
-- [reCAPTCHA Validator for Laravel 5](https://blog.especializati.com.br/google-recaptcha-no-laravel/)
+## Learning Laravel
 
-## Referências
-- Arquivos: pasta raiz > storage 
-    1. Modelo relacional
-    2. Processo do SEI
-    3. Documentação Técnica
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- Dados do Wizard: pasta config > wizard_form
-    1. Unidades
-    2. Estados
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## OBS
-- Ao colocar em produção, retirar o readme.md e os arquivos de referencia para não subir para o sistema em produção
+## Laravel Sponsors
 
-## Possíveis Issues
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### 1. Erro ao recuperar a senha.
+### Premium Partners
 
-Este problema ocorre devido ao fato do google sempre desativar o acesso a apps inseguros. Para corrigir isso segue o passo a passo: 
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[OP.GG](https://op.gg)**
 
-- Entre no arquivo `config > mail.php`
-- Pegue a senha e o e-mail nos indices `username` e `password`;
-    ```php
-        /*
-        |--------------------------------------------------------------------------
-        | SMTP Server Username
-        |--------------------------------------------------------------------------
-        |
-        | If your SMTP server requires a username for authentication, you should
-        | set it here. This will get used to authenticate with your server on
-        | connection. You may also set the "password" value below this one.
-        |
-        */
+## Contributing
 
-        'username' => env('MAIL_USERNAME', 'email_aqui'),
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-        'password' => env('MAIL_PASSWORD', 'senha_aqui'),
+## Code of Conduct
 
-    ```
-- Faça login na conta do google do e-mail de redefinição de senha.
-- Vá em **Gerenciar sua conta do google**
-- Clique na aba **Segurança**
-- Depois ative o **Acesso a app menos seguro**.
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-**Pronto, problema resolvido!**
-    
+## Security Vulnerabilities
 
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
