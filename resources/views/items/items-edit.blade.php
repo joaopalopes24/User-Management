@@ -34,7 +34,7 @@
                     <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                         <label for="status">Status</label>
                         <select class="form-control custom-select" name="status" id="status" required>
-                            <option value="">Status do Menu</option>
+                            <option value="">Status do Item</option>
                             <option value="$2y$10rH@g" <?php if($items->first()->status == '$2y$10rH@g') echo 'selected'; ?>>Ativo</option>
                             <option value=".fZEW.57&!" <?php if($items->first()->status == '.fZEW.57&!') echo 'selected'; ?>>Inativo</option>
                         </select>
