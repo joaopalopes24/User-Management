@@ -71,6 +71,3 @@ Este problema ocorre devido ao fato do google sempre desativar o acesso a apps i
 - Depois ative o **Acesso a app menos seguro**.
 
 **Pronto, problema resolvido!**
-    
-
-

@@ -19,4 +19,13 @@ class MenuRequest extends FormRequest
             'status' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Nome',
+            'icon' => 'Ícone',
+            'status' => 'Status',
+        ];
+    }
 }
