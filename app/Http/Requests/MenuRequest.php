@@ -14,8 +14,8 @@ class MenuRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'icon' => 'required',
+            'name'   => 'required',
+            'icon'   => 'required',
             'status' => 'required',
         ];
     }
@@ -23,8 +23,8 @@ class MenuRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Nome',
-            'icon' => 'Ícone',
+            'name'   => 'Nome',
+            'icon'   => 'Ícone',
             'status' => 'Status',
         ];
     }

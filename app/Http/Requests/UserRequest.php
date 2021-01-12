@@ -14,12 +14,24 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'cpf' => 'required',
-            'number' => 'required',
-            'email' => 'required|email',
-            'status' => 'required',
+            'name'    => 'required',
+            'cpf'     => 'required|size:11',
+            'number'  => 'required|size:11',
+            'email'   => 'required|email',
+            'status'  => 'required',
             'profile' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name'    => 'Nome',
+            'cpf'     => 'CPF',
+            'number'  => 'Telefone',
+            'email'   => 'E-mail',
+            'status'  => 'Status',
+            'profile' => 'Perfil',
         ];
     }
 }

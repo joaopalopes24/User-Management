@@ -124,14 +124,12 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
                                 <strong>{{ $errors->first('success') }}</strong>
                             </div>
-                        @endif
-                        @if($errors->has('failed'))
+                        @elseif($errors->has('failed'))
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
                                 <strong>{{ $errors->first('failed') }}</strong>
                             </div>
-                        @endif
-                        @if($errors->any())
+                        @elseif($errors->any())
                             <div class="alert alert-danger alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">×</button>
                                 @foreach ($errors->all() as $error)

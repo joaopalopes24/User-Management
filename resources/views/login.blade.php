@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="form-group has-feedback">
-            <input type="password" name='password' class="form-control" placeholder="Senha" required>
+            <input type="password" name='password' class="form-control" placeholder="Senha" minlength="8" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             <div class="invalid-feedback">
                 Campo Obrigatório

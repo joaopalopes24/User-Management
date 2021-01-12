@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class RecoverRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,16 +14,14 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required',
-            'status' => 'required',
+            'email'    => 'required|email',
         ];
     }
 
     public function attributes()
     {
         return [
-            'name'   => 'Nome',
-            'status' => 'Status',
+            'email'    => 'E-mail',
         ];
     }
 }

@@ -14,11 +14,22 @@ class ItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'icon' => 'required',
+            'name'   => 'required',
+            'icon'   => 'required',
             'status' => 'required',
-            'menu' => 'nullable',
+            'menu'   => 'nullable',
             'method' => 'required',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name'   => 'Nome',
+            'icon'   => 'Ícone',
+            'status' => 'Status',
+            'menu'   => 'Menu',
+            'method' => 'Método',
         ];
     }
 }

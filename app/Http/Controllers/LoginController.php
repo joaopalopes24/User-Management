@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RecoverRequest;
+use App\Http\Requests\ResetRequest;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +28,7 @@ class LoginController extends Controller
         $credentials = $request->validated();
 
         if (Auth::attempt($credentials)){
-            if(Auth::user()->status == '.fZEW.57&!'){
+            if(Auth::user()->status != '$2y$10rH@g'){
                 Auth::logout();
                 return redirect()->route('login.index')->withErrors(['alert' => 'Usuário Bloqueado. Favor entrar em contato com o Administrador.']);
             }
@@ -42,17 +44,15 @@ class LoginController extends Controller
         return view('recover');
     }
 
-    public function recover_do(Request $request)
+    public function recover_do(RecoverRequest $request)
     {
-        $request->validate(['email' => 'required|email']);
+        $request = $request->validated();
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        $status = Password::sendResetLink($request);
     
         return $status === Password::RESET_LINK_SENT
-            ? redirect()->route('login.index')->withErrors(['success' => 'E-mail para redefinição de senha enviado com sucesso.'])
-            : redirect()->route('login.recover')->withErrors(['failed' => 'Erro ao encaminhar redefinição de senha.']);
+            ? redirect()->route('login.index')->withErrors(['success' => 'E-mail para redefinição de senha enviado com sucesso!'])
+            : redirect()->route('login.recover')->withErrors(['failed' => 'Erro ao encaminhar redefinição de senha!']);
     }
 
     public function reset($token)
@@ -60,21 +60,14 @@ class LoginController extends Controller
         return view('reset',['token' => $token]);
     }
 
-    public function reset_do(Request $request)
+    public function reset_do(ResetRequest $request)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-            'password_confirmation' => 'required|min:8',
-        ]);
+        $request = $request->validated();
 
-        if($request->password != $request->password_confirmation){
-            return back()->withErrors(['failed' => 'Senha digitadas Divergentes.']);
-        }
+        dd($request);
     
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $request,
             function ($user, $password) use ($request) {
                 $user->forceFill([
                     'password' => Hash::make($password)
@@ -87,8 +80,8 @@ class LoginController extends Controller
         );
     
         return $status == Password::PASSWORD_RESET
-            ? redirect()->route('login.index')->withErrors(['success' =>'Senha alterada com sucesso.'])
-            : redirect()->route('login.index')->withErrors(['failed' =>'Link já utilizado para redefinição de senha.']);
+            ? redirect()->route('login.index')->withErrors(['success' =>'Senha alterada com sucesso!'])
+            : redirect()->route('login.index')->withErrors(['failed' =>'Erro ao tentar alterar a senha do Usuário!']);
     }
 
     public function logout()

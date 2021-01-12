@@ -45,7 +45,7 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="col-sm-6 col-md-4 col-lg-3 form-group">
-                        <label for="menu">Menus</label>
+                        <label for="menu">Menu</label>
                         <select class="form-control custom-select" name="menu" id="menu" required>
                             <option value="">Nome do Menu</option>
                             @foreach ($menus as $var)

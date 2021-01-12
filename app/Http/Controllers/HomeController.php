@@ -27,21 +27,9 @@ class HomeController extends Controller
     {
         $dados = $request->validated();
 
-        $credentials = [
-            'email' => Auth::user()->email,
-            'password' => $dados['password_old'],
-        ];
+        User::change(Auth::user()->id,$dados['password']);
 
-        if(Auth::attempt($credentials)){
-            if($dados['password'] == $dados['password_confirmation']){
-                User::change(Auth::user()->id,$dados['password']);
-                return redirect()->route('home.change_password')->withErrors(['success' => 'Senha alterada com Sucesso.']);
-            } else {
-                return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha digitadas Divergentes.']);
-            }
-        } else {
-            return redirect()->route('home.change_password')->withErrors(['failed' => 'Senha Atual está incorreta.']);
-        }
+        return redirect()->route('home.change_password')->withErrors(['success' => 'Senha alterada com Sucesso.']);
     }
 
     public function access_denied()
