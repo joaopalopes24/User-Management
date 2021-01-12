@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -18,7 +19,7 @@ class UserRequest extends FormRequest
             'cpf'     => 'required|size:11',
             'number'  => 'required|size:11',
             'email'   => 'required|email',
-            'status'  => 'required',
+            'status'  => ['required',Rule::in(['$2y$10rH@g', '.fZEW.57&!'])],
             'profile' => 'required',
         ];
     }
