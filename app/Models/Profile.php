@@ -13,12 +13,12 @@ class Profile extends Model
 
     public function permission()
     {
-        return $this->hasMany(Permission::class);
+        return $this->hasMany(Permission::class,'tbl_profiles_id');
     }
 
     public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class,'tbl_profiles_id');
     }
 
     public static function read($id,$name,$status)

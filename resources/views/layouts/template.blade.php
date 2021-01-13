@@ -78,6 +78,8 @@
         </header>
         <!-- Fim Cabeçalho -->
 
+        <?php dd($menus,$items); ?>
+
         <!-- Início Menu -->
         <aside class="main-sidebar">
             <section class="sidebar">

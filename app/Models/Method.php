@@ -13,12 +13,12 @@ class Method extends Model
 
     public function item()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class,'tbl_methods_id');
     }
 
     public function permission()
     {
-        return $this->hasMany(Permission::class);
+        return $this->hasMany(Permission::class,'tbl_methods_id');
     }
 
     public static function class()

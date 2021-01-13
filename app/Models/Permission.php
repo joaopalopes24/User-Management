@@ -49,6 +49,15 @@ class Permission extends Model
 
     public static function permission_item()
     {
+        $result = Permission::select()
+            ->method
+            ->get();
+
+        return $result;
+    }
+
+    /* public static function permission_item()
+    {
         $result = Permission::select('tbl_menus_items.tbl_menus_id as menu_id', 'tbl_menus_items.name as name', 'tbl_menus_items.icon as icon', 'tbl_methods.route as route')
             ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
             ->join('tbl_methods as tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
@@ -59,7 +68,7 @@ class Permission extends Model
             ->get();
 
         return $result;
-    }
+    } */
 
     public static function read($id,$profile,$method)
     {       

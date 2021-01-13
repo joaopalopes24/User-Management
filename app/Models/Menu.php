@@ -13,7 +13,7 @@ class Menu extends Model
 
     public function item()
     {
-        return $this->hasMany(Item::class);
+        return $this->hasMany(Item::class,'tbl_menus_id');
     }
 
     public static function read($id,$name,$status)
