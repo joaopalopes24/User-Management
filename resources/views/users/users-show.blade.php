@@ -34,7 +34,7 @@
                 <div class="row col-md-12">
                     <div class="col-sm-6 col-md-3 col-lg-2 form-group">
                         <label>Perfil</label>
-                        <input class="form-control" value="{{$profiles->first()->name}}" disabled>
+                        <input class="form-control" value="{{$users->first()->profile->name}}" disabled>
                     </div>
                     <div class="col-sm-6 col-md-2 col-lg-2 form-group">
                         <label>Status</label>

@@ -31,11 +31,7 @@
                                 <td>{{$var1->email}}</td>
                                 <td>{{$var1->cpf}}</td>
                                 @if($var1->tbl_profiles_id != NULL)
-                                    @foreach($profiles as $var2)
-                                        @if($var2->id == $var1->tbl_profiles_id)
-                                            <td>{{$var2->name}}</td>
-                                        @endif
-                                    @endforeach
+                                    <td>{{$var1->profile->name}}</td>
                                 @else
                                     <td>Sem Perfil</td>
                                 @endif

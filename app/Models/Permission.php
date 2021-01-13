@@ -14,22 +14,12 @@ class Permission extends Model
 
     public function method()
     {
-        return $this->belongsTo(Method::class);
+        return $this->belongsTo(Method::class,'tbl_methods_id');
     }
 
     public function profile()
     {
-        return $this->belongsTo(Profile::class);
-    }
-
-    public static function permission_check($id,$route)
-    {       
-        $result = Permission::where('tbl_permissions.tbl_profiles_id', $id)
-            ->join('tbl_methods','tbl_permissions.tbl_methods_id','tbl_methods.id')
-            ->where('tbl_methods.route', $route)
-            ->count();
-
-        return $result;
+        return $this->belongsTo(Profile::class,'tbl_profiles_id');
     }
 
     public static function permission_menu()
@@ -49,15 +39,6 @@ class Permission extends Model
 
     public static function permission_item()
     {
-        $result = Permission::select()
-            ->method
-            ->get();
-
-        return $result;
-    }
-
-    /* public static function permission_item()
-    {
         $result = Permission::select('tbl_menus_items.tbl_menus_id as menu_id', 'tbl_menus_items.name as name', 'tbl_menus_items.icon as icon', 'tbl_methods.route as route')
             ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
             ->join('tbl_methods as tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
@@ -68,7 +49,7 @@ class Permission extends Model
             ->get();
 
         return $result;
-    } */
+    }
 
     public static function read($id,$profile,$method)
     {       

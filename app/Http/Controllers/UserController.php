@@ -12,7 +12,6 @@ class UserController extends Controller
     {
         $dados = [
             'users' => User::read(NULL,NULL,NULL,NULL,NULL,NULL,NULL),
-            'profiles' => Profile::read(NULL,NULL,NULL),
         ];
         
         return view('users.users-index',$dados);
@@ -38,12 +37,8 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $users = User::read($id,NULL,NULL,NULL,NULL,NULL,NULL);
-        $id_perfil = $users->first()->tbl_profiles_id;
-
         $dados = [
-            'users' => $users,
-            'profiles' => Profile::read($id_perfil,NULL,NULL),
+            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
         ];
 
         return view('users.users-show',$dados);

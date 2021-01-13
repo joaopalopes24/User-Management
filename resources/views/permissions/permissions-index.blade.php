@@ -24,7 +24,7 @@
                                 <div class="tab-pane <?php if($var1->class == $var1->first()->class){echo 'active';}?>" id="{{ $var1->class }}">
                                     @foreach ($methods as $var2)
                                         @if($var2->class == $var1->class)
-                                            @if(Permission::permission_check($profiles->first()->id,$var2->route))
+                                            @if(Permission::read(NULL,$profiles->first()->id,$var2->id) != '[]')
                                                 <div class="checkbox">
                                                     <label><input type="checkbox" name="{{ $var2->id }}" checked> {{ $var2->method }} </label>
                                                 </div>

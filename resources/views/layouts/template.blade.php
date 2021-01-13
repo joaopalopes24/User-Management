@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<?php use App\Models\Permission; $menus = Permission::permission_menu(); $items = Permission::permission_item(); ?>
+<?php use App\Models\Permission; $menus = Permission::permission_menu(); $items = Permission::permission_item();//Permission::read(NULL,Auth::user()->tbl_profiles_id,NULL); ?>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -77,8 +77,6 @@
             </nav>
         </header>
         <!-- Fim Cabeçalho -->
-
-        <?php dd($menus,$items); ?>
 
         <!-- Início Menu -->
         <aside class="main-sidebar">

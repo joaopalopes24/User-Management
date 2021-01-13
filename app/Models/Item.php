@@ -13,12 +13,12 @@ class Item extends Model
 
     public function menu()
     {
-        return $this->belongsTo(Menu::class);
+        return $this->belongsTo(Menu::class,'tbl_menus_id');
     }
 
     public function method()
     {
-        return $this->belongsTo(Method::class);
+        return $this->belongsTo(Method::class,'tbl_methods_id');
     }
 
     public static function read($id,$name,$status,$menu,$method)

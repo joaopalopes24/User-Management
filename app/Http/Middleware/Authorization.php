@@ -30,9 +30,9 @@ class Authorization
             return redirect()->route('home.access_denied');
         }
 
-        $permission = Permission::permission_check(Auth::user()->tbl_profiles_id,$route);
+        $permission = Permission::read(NULL,Auth::user()->tbl_profiles_id,$route_exist->first()->id);
         
-        if(!$permission){
+        if($permission == '[]'){
             return redirect()->route('home.access_denied');
         }
 

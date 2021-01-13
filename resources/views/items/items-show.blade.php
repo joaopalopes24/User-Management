@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Item - '.$menu->first()->name)
+@section('title', 'Item - '.$items->first()->menu->name)
 @section('subtitle', 'Editar')
 @section('conteudo')
 <!-- Início Conteúdo -->
@@ -30,18 +30,18 @@
             <div class="row col-md-12">
                 <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                     <label for="icon">Menu</label>
-                    <input class="form-control" value="{{$menu->first()->name}}" disabled>
+                    <input class="form-control" value="{{$items->first()->menu->name}}" disabled>
                 </div>
             </div>
             <div class="row col-md-12">
                 <div class="col-sm-6 col-md-4 col-lg-3 form-group">
                     <label for="icon">Método</label>
-                    <input class="form-control" value="{{$method->first()->route}}" disabled>
+                    <input class="form-control" value="{{$items->first()->method->route}}" disabled>
                 </div>
             </div>
         </div>
         <div class="box-footer">
-            <a href="{{route('menus.items.index',$menu->first()->id)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
+            <a href="{{route('menus.items.index',$items->first()->tbl_menus_id)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
         </div>
     </div>
 </div>

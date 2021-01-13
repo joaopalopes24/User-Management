@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Item - '.$menu->first()->name)
+@section('title', 'Item - '.$items->first()->menu->name)
 @section('subtitle', 'Editar')
 @section('conteudo')
 <!-- Início Conteúdo -->
@@ -73,7 +73,7 @@
                 </div>
             </div>
             <div class="box-footer">
-                <a href="{{route('menus.items.index',$menu->first()->id)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
+                <a href="{{route('menus.items.index',$items->first()->tbl_menus_id)}}"><button type="button" class="btn btn-danger">Voltar</button></a>
                 <button type="submit" class="btn btn-primary">Editar</button>
                 <!-- Início do Ícones -->
                 <div class="tab-content">

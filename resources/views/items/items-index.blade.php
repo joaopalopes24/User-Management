@@ -1,5 +1,5 @@
 @extends('layouts.template')
-@section('title', 'Itens - '.$menu->first()->name)
+@section('title', 'Itens - '.$items->first()->menu->name)
 @section('subtitle', 'Status')
 @section('conteudo')
 <!-- Início Conteúdo -->
@@ -8,7 +8,7 @@
     <div class="box box-primary">
         <div class="box-header">
             <a href="{{route('menus.index')}}"><button class="btn btn-danger">Voltar</button></a>
-            <a href="{{route('menus.items.create',$menu->first()->id)}}"><button class="btn btn-primary">Novo Item</button></a>
+            <a href="{{route('menus.items.create',$items->first()->tbl_menus_id)}}"><button class="btn btn-primary">Novo Item</button></a>
         </div>
         <div class="box-body">
         <div class="table-responsive">
@@ -29,11 +29,7 @@
                             <td>{{$var1->id}}</td>
                             <td>{{$var1->name}}</td>
                             <td>{{$var1->icon}}</td>
-                            @foreach($methods as $var2)
-                                @if($var2->id == $var1->tbl_methods_id)
-                                    <td>{{$var2->route}}</td>
-                                @endif
-                            @endforeach
+                            <td>{{$var1->method->route}}</td>
                             @if($var1->status == '$2y$10rH@g')
                                 <td>Ativo</td>
                             @elseif($var1->status == '.fZEW.57&!')
