@@ -12,6 +12,16 @@ class Permission extends Model
 
     protected $table = 'tbl_permissions';
 
+    public function method()
+    {
+        return $this->belongsTo(Method::class);
+    }
+
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
     public static function permission_check($id,$route)
     {       
         $result = Permission::where('tbl_permissions.tbl_profiles_id', $id)

@@ -11,6 +11,16 @@ class Item extends Model
 
     protected $table = 'tbl_menus_items';
 
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class);
+    }
+
+    public function method()
+    {
+        return $this->belongsTo(Method::class);
+    }
+
     public static function read($id,$name,$status,$menu,$method)
     {       
         $result = Item::select()

@@ -11,6 +11,11 @@ class Menu extends Model
 
     protected $table = 'tbl_menus';
 
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
+
     public static function read($id,$name,$status)
     {       
         $result = Menu::select()

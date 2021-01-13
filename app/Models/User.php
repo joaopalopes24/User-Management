@@ -30,6 +30,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function profile()
+    {
+        return $this->belongsTo(Profile::class);
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $url = config('app.url').'/application/login/reset-password/'.$token;

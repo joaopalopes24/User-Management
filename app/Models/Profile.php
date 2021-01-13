@@ -11,6 +11,16 @@ class Profile extends Model
 
     protected $table = 'tbl_profiles';
 
+    public function permission()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class);
+    }
+
     public static function read($id,$name,$status)
     {       
         $result = Profile::select()

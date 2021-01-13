@@ -11,6 +11,16 @@ class Method extends Model
 
     protected $table = 'tbl_methods';
 
+    public function item()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function permission()
+    {
+        return $this->hasMany(Permission::class);
+    }
+
     public static function class()
     {       
         $result = Method::select('class')->distinct()->get();
