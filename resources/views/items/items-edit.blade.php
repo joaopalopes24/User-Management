@@ -62,8 +62,9 @@
                         <label for="method">Método</label>
                         <select class="form-control custom-select" name="method" id="method" required>
                             <option value="">Método de Acesso</option>
+                            <option value="{{$items->first()->method->id}}" selected>{{$items->first()->method->route}}</option>
                             @foreach ($methods as $var)
-                                <option value="{{$var->id}}" <?php if($items->first()->tbl_methods_id == $var->id) echo 'selected'; ?>>{{$var->route}}</option>
+                                <option value="{{$var->id}}">{{$var->route}}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback">

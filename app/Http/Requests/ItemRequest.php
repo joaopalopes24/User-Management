@@ -22,15 +22,4 @@ class ItemRequest extends FormRequest
             'method' => 'required',
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'name'   => 'Nome',
-            'icon'   => 'Ícone',
-            'status' => 'Status',
-            'menu'   => 'Menu',
-            'method' => 'Método',
-        ];
-    }
 }

@@ -19,12 +19,4 @@ class ProfileRequest extends FormRequest
             'status' => ['required',Rule::in(['$2y$10rH@g', '.fZEW.57&!'])],
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'name'   => 'Nome',
-            'status' => 'Status',
-        ];
-    }
 }

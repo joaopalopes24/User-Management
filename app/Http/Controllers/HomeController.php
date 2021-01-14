@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         $dados = $request->validated();
 
-        User::change(Auth::user()->id,$dados['password']);
+        User::change(Auth::user()->id,$dados['key']);
 
         return redirect()->route('home.change_password')->withErrors(['success' => 'Senha alterada com Sucesso.']);
     }

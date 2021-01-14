@@ -20,13 +20,4 @@ class MenuRequest extends FormRequest
             'status' => ['required',Rule::in(['$2y$10rH@g', '.fZEW.57&!'])],
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'name'   => 'Nome',
-            'icon'   => 'Ícone',
-            'status' => 'Status',
-        ];
-    }
 }

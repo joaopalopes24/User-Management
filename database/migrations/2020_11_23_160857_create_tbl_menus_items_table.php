@@ -16,7 +16,7 @@ class CreateTblMenusItemsTable extends Migration
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
             $table->unsignedBigInteger('tbl_menus_id');
-            $table->unsignedBigInteger('tbl_methods_id');
+            $table->unsignedBigInteger('tbl_methods_id')->unique();
 
             $table->foreign('tbl_menus_id')->references('id')->on('tbl_menus')->onDelete('cascade');
             $table->foreign('tbl_methods_id')->references('id')->on('tbl_methods')->onDelete('cascade');

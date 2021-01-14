@@ -147,6 +147,20 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'email'    => 'E-mail',
+        'password' => 'Senha',
+        'name'     => 'Nome',
+        'icon'     => 'Ícone',
+        'status'   => 'Status',
+        'menu'     => 'Menu',
+        'method'   => 'Método',
+        'token'    => 'Token',
+        'cpf'      => 'CPF',
+        'number'   => 'Telefone',
+        'profile'  => 'Perfil',
+        'key_old'  => 'Senha Atual',
+        'key'      => 'Nova Senha',
+    ],
 
 ];

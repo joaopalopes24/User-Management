@@ -17,11 +17,4 @@ class RecoverRequest extends FormRequest
             'email'    => 'required|email',
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'email'    => 'E-mail',
-        ];
-    }
 }

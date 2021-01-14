@@ -14,16 +14,8 @@ class HomeRequest extends FormRequest
     public function rules()
     {
         return [
-            'password_old'          => 'required|password|string|min:8',
-            'password'              => 'required|confirmed|string|min:8',
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'password_old'          => 'Senha Atual',
-            'password'              => 'Nova Senha',
+            'key_old'          => 'required|password|string|min:8',
+            'key'              => 'required|confirmed|string|min:8',
         ];
     }
 }

@@ -23,16 +23,4 @@ class UserRequest extends FormRequest
             'profile' => 'required',
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'name'    => 'Nome',
-            'cpf'     => 'CPF',
-            'number'  => 'Telefone',
-            'email'   => 'E-mail',
-            'status'  => 'Status',
-            'profile' => 'Perfil',
-        ];
-    }
 }

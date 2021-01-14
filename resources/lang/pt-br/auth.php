@@ -17,4 +17,14 @@ return [
     'password' => 'A senha digitada está incorreta.',
     'throttle' => 'Poxa... Você tentou logar-se muitas vezes. Por favor tente novamente em :seconds segundos.',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Confirmation Language Lines
+    |--------------------------------------------------------------------------
+    */
+
+    'insert'   => ':attribute inserido com sucesso!',
+    'update' => ':attribute atualizado com sucesso!',
+    'delete' => ':attribute deletado com sucesso!',
+
 ];

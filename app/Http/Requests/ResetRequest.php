@@ -19,13 +19,4 @@ class ResetRequest extends FormRequest
             'password'              => 'required|string|confirmed|min:8',
         ];
     }
-
-    public function attributes()
-    {
-        return [
-            'token'                 => 'Token',
-            'email'                 => 'E-mail',
-            'password'              => 'Senha',
-        ];
-    }
 }
