@@ -43,6 +43,6 @@ class PermissionController extends Controller
 
         $profile = Profile::read($id,NULL,NULL);
 
-        return redirect()->route('profiles.index')->withErrors(['success' => 'Permissões do perfil - '.$profile->first()->name.' - alteradas com sucesso.']);
+        return redirect()->route('profiles.index')->withErrors(['success' => trans('auth.permission',['name' => $profile->first()->name])]);
     }
 }

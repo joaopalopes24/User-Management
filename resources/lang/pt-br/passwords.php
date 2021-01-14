@@ -15,8 +15,8 @@ return [
 
     'reset'     => 'Parabéns, a sua senha foi redefinida!',
     'sent'      => 'O link para redefinição de senha foi enviado para o seu e-mail, ok?',
-    'throttled' => 'Poxa... Aguarde alguns segundos para tentar novamente',
-    'token'     => 'Poxa... O token para recuperação de senha é inválido.',
+    'throttled' => 'Poxa... Ocorreu um erro ao encaminhar sua redefinição de senha. Tente novamente em segundos!',
+    'token'     => 'Ops... Houve um erro ao tentar alterar a senha do Usuário!',
     'user'      => "Caramba... Infelizmente não encontramos nenhum usuário com esse endereço de e-mail!",
 
 ];

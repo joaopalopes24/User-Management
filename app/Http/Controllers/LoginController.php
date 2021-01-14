@@ -17,7 +17,7 @@ class LoginController extends Controller
     public function index()
     {
         if(Session::has('expired')){
-            return redirect()->route('login.index')->withErrors(['failed' => 'Sessão Expirada. Favor realizar novamente o login.']);
+            return redirect()->route('login.index')->withErrors(trans('auth.session'));
         }
         return view('login');
     }
@@ -29,12 +29,12 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)){
             if(Auth::user()->status != '$2y$10rH@g'){
                 Auth::logout();
-                return redirect()->route('login.index')->withErrors(['alert' => 'Poxa... Seu usuário está bloqueado. Favor entrar em contato com o Administrador.']);
+                return redirect()->route('login.index')->withErrors(['alert' => trans('auth.blocked')]);
             }
             Session::migrate();
             return redirect()->route('home.index');
         } else {
-            return redirect()->route('login.index')->withErrors(['failed' => 'Poxa... Usuário e/ou Senha Incorretos.']);
+            return redirect()->route('login.index')->withErrors(trans('auth.failed'));
         }
     }
 
@@ -50,8 +50,8 @@ class LoginController extends Controller
         $status = Password::sendResetLink($request);
     
         return $status === Password::RESET_LINK_SENT
-            ? redirect()->route('login.index')->withErrors(['success' => 'O link para redefinição de senha foi enviado para o seu e-mail, ok?'])
-            : redirect()->route('login.recover')->withErrors(['failed' => 'Poxa... Ocorreu um erro ao encaminhar sua redefinição de senha. Tente novamente em segundos!']);
+            ? redirect()->route('login.index')->withErrors(['success' => trans('passwords.sent')])
+            : redirect()->route('login.recover')->withErrors(trans('passwords.throttled'));
     }
 
     public function reset($token)
@@ -79,8 +79,8 @@ class LoginController extends Controller
         );
     
         return $status == Password::PASSWORD_RESET
-            ? redirect()->route('login.index')->withErrors(['success' =>'Parabéns, a sua senha foi redefinida!'])
-            : redirect()->route('login.index')->withErrors(['failed' =>'Ops... Houve um erro ao tentar alterar a senha do Usuário!']);
+            ? redirect()->route('login.index')->withErrors(['success' => trans('passwords.reset')])
+            : redirect()->route('login.index')->withErrors(trans('passwords.token'));
     }
 
     public function logout()

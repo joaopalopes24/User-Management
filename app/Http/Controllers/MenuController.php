@@ -27,7 +27,7 @@ class MenuController extends Controller
 
         Menu::create($dados);
 
-        return redirect()->route('menus.index')->withErrors(['success' => 'Menu cadastrado com sucesso.']);
+        return redirect()->route('menus.index')->withErrors(['success' => trans('auth.store',['name' => 'Menu'])]);
     }
 
     public function show($id)
@@ -54,13 +54,13 @@ class MenuController extends Controller
 
         Menu::modernize($id,$dados);
         
-        return redirect()->route('menus.index')->withErrors(['success' => 'Menu editado com sucesso.']);
+        return redirect()->route('menus.index')->withErrors(['success' => trans('auth.update',['name' => 'Menu'])]);
     }
     
     public function destroy($id)
     {
         Menu::erase($id);
 
-        return redirect()->route('menus.index')->withErrors(['success' => 'Menu deletado com sucesso.']);
+        return redirect()->route('menus.index')->withErrors(['success' => trans('auth.destroy',['name' => 'Menu'])]);
     }
 }

@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
         Profile::create($dados);
 
-        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil cadastrado com sucesso.']);
+        return redirect()->route('profiles.index')->withErrors(['success' => trans('auth.store',['name' => 'Perfil'])]);
     }
 
     public function show($id)
@@ -54,13 +54,13 @@ class ProfileController extends Controller
 
         Profile::modernize($id,$dados);
         
-        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil editado com sucesso.']);
+        return redirect()->route('profiles.index')->withErrors(['success' => trans('auth.update',['name' => 'Perfil'])]);
     }
     
     public function destroy($id)
     {
         Profile::erase($id);
 
-        return redirect()->route('profiles.index')->withErrors(['success' => 'Perfil deletado com sucesso.']);
+        return redirect()->route('profiles.index')->withErrors(['success' => trans('auth.destroy',['name' => 'Perfil'])]);
     }
 }

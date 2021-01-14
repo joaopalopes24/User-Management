@@ -34,7 +34,7 @@ class ItemController extends Controller
 
         Item::create($dados,$menu);
 
-        return redirect()->route('menus.items.index',$menu)->withErrors(['success' => 'Item cadastrado com sucesso.']);
+        return redirect()->route('menus.items.index',$menu)->withErrors(['success' => trans('auth.store',['name' => 'Item'])]);
     }
 
     public function show($id)
@@ -65,7 +65,7 @@ class ItemController extends Controller
 
         $items = Item::read($id,NULL,NULL,NULL,NULL);
 
-        return redirect()->route('menus.items.index',$items->first()->tbl_menus_id)->withErrors(['success' => 'Item editado com sucesso.']);
+        return redirect()->route('menus.items.index',$items->first()->tbl_menus_id)->withErrors(['success' => trans('auth.update',['name' => 'Item'])]);
     }
     
     public function destroy($id)
@@ -74,6 +74,6 @@ class ItemController extends Controller
         
         Item::erase($id);
 
-        return redirect()->route('menus.items.index',$items->first()->tbl_menus_id)->withErrors(['success' => 'Item deletado com sucesso.']);
+        return redirect()->route('menus.items.index',$items->first()->tbl_menus_id)->withErrors(['success' => trans('auth.destroy',['name' => 'Item'])]);
     }
 }

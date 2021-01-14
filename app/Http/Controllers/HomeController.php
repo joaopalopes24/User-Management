@@ -29,7 +29,7 @@ class HomeController extends Controller
 
         User::change(Auth::user()->id,$dados['key']);
 
-        return redirect()->route('home.change_password')->withErrors(['success' => 'Senha alterada com Sucesso.']);
+        return redirect()->route('home.change_password')->withErrors(['success' => trans('passwords.reset')]);
     }
 
     public function access_denied()

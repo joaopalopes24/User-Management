@@ -12,8 +12,9 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
-    'failed'   => 'Nos desculpe, mas, as informações de login não foram encontradas.',
+    'session'  => 'Poxa... Sua sessão foi expirada. Favor realizar novamente o login.',
+    'blocked'  => 'Poxa... Seu usuário está bloqueado. Favor entrar em contato com o Administrador.',
+    'failed'   => 'Usuário e/ou Senha incorretos.',
     'password' => 'A senha digitada está incorreta.',
     'throttle' => 'Poxa... Você tentou logar-se muitas vezes. Por favor tente novamente em :seconds segundos.',
 
@@ -23,8 +24,9 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'insert'   => ':attribute inserido com sucesso!',
-    'update' => ':attribute atualizado com sucesso!',
-    'delete' => ':attribute deletado com sucesso!',
+    'store'      => ':name cadastrado com sucesso!',
+    'update'     => ':name atualizado com sucesso!',
+    'destroy'    => ':name deletado com sucesso!',
+    'permission' => 'Permissões do perfil - :name - alteradas com sucesso.',
 
 ];

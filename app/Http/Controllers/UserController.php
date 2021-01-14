@@ -32,7 +32,7 @@ class UserController extends Controller
 
         User::create($dados);
 
-        return redirect()->route('users.index')->withErrors(['success' => 'Usuário cadastrado com sucesso.']);
+        return redirect()->route('users.index')->withErrors(['success' => trans('auth.store',['name' => 'Usuário'])]);
     }
 
     public function show($id)
@@ -60,13 +60,13 @@ class UserController extends Controller
 
         User::modernize($id,$dados);
         
-        return redirect()->route('users.index')->withErrors(['success' => 'Usuário editado com sucesso.']);
+        return redirect()->route('users.index')->withErrors(['success' => trans('auth.update',['name' => 'Usuário'])]);
     }
     
     public function destroy($id)
     {
         User::erase($id);
 
-        return redirect()->route('users.index')->withErrors(['success' => 'Usuário deletado com sucesso.']);
+        return redirect()->route('users.index')->withErrors(['success' => trans('auth.destroy',['name' => 'Usuário'])]);
     }
 }
