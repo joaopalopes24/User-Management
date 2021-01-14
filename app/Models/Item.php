@@ -39,6 +39,7 @@ class Item extends Model
             ->when($method, function ($query, $method) {
                 return $query->where('tbl_methods_id', $method);
             })
+            ->orderBy('tbl_menus_id')
             ->get();
         
         return $result;
