@@ -33,7 +33,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
-<?php use App\Models\Permission; $menus = Permission::permission_menu(); $items = Permission::permission_item();//Permission::read(NULL,Auth::user()->tbl_profiles_id,NULL); ?>
+<?php use App\Models\Item; $items = Item::read(NULL,NULL,'$2y$10rH@g',NULL,NULL); ?>
 
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -82,23 +82,39 @@
         <aside class="main-sidebar">
             <section class="sidebar">
                 <ul class="sidebar-menu" data-widget="tree">
-                    @foreach ($menus as $var1)
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa <?php echo "$var1->icon"; ?>"></i>
-                                <span> {{$var1->name}}</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                @foreach ($items as $var2)
-                                    @if($var2->menu_id == $var1->id)
-                                        <li><a href="{{route($var2->route)}}"><i class="fa <?php echo "$var2->icon"; ?>"></i> {{$var2->name}}</a></li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </li>
+                    <?php $menu = 0 ?>
+                    @foreach ($items as $var1)
+                        @if($var1->method->permission->where('tbl_profiles_id',Auth::user()->tbl_profiles_id) != '[]' && $var1->menu->status == '$2y$10rH@g')
+                            @if($menu == 0)
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa {{$var1->menu->icon}}"></i>
+                                        <span> {{$var1->menu->name}}</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{route($var1->method->route)}}"><i class="fa {{$var1->icon}}"></i> {{$var1->name}}</a></li>
+                                <?php $menu = $var1->tbl_menus_id ?>
+                            @elseif($var1->tbl_menus_id != $menu)
+                                    </ul>
+                                </li>
+                                <li class="treeview">
+                                    <a href="#">
+                                        <i class="fa {{$var1->menu->icon}}"></i>
+                                        <span> {{$var1->menu->name}}</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    <ul class="treeview-menu">
+                                        <li><a href="{{route($var1->method->route)}}"><i class="fa {{$var1->icon}}"></i> {{$var1->name}}</a></li>
+                                <?php $menu = $var1->tbl_menus_id ?>
+                            @else
+                                <li><a href="{{route($var1->method->route)}}"><i class="fa {{$var1->icon}}"></i> {{$var1->name}}</a></li>
+                            @endif
+                        @endif
                     @endforeach
                 </ul>
             </section>

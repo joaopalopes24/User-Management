@@ -13,7 +13,7 @@ class Method extends Model
 
     public function item()
     {
-        return $this->hasMany(Item::class,'tbl_methods_id');
+        return $this->hasOne(Item::class,'tbl_methods_id');
     }
 
     public function permission()

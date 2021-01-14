@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Permission extends Model
 {
@@ -20,35 +19,6 @@ class Permission extends Model
     public function profile()
     {
         return $this->belongsTo(Profile::class,'tbl_profiles_id');
-    }
-
-    public static function permission_menu()
-    {
-        $result = Permission::select('tbl_menus.id as id', 'tbl_menus.name as name', 'tbl_menus.icon as icon')
-            ->distinct()
-            ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
-            ->join('tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
-            ->join('tbl_menus_items','tbl_methods.id', 'tbl_menus_items.tbl_methods_id')
-            ->where('tbl_menus_items.status', '$2y$10rH@g')
-            ->join('tbl_menus','tbl_menus_items.tbl_menus_id', 'tbl_menus.id')
-            ->where('tbl_menus.status', '$2y$10rH@g')
-            ->get();
-
-        return $result;
-    }
-
-    public static function permission_item()
-    {
-        $result = Permission::select('tbl_menus_items.tbl_menus_id as menu_id', 'tbl_menus_items.name as name', 'tbl_menus_items.icon as icon', 'tbl_methods.route as route')
-            ->where('tbl_permissions.tbl_profiles_id', Auth::user()->tbl_profiles_id)
-            ->join('tbl_methods as tbl_methods', 'tbl_permissions.tbl_methods_id', 'tbl_methods.id')
-            ->join('tbl_menus_items','tbl_methods.id','tbl_menus_items.tbl_methods_id')
-            ->where('tbl_menus_items.status', '$2y$10rH@g')
-            ->join('tbl_menus','tbl_menus_items.tbl_menus_id', 'tbl_menus.id')
-            ->where('tbl_menus.status', '$2y$10rH@g')
-            ->get();
-
-        return $result;
     }
 
     public static function read($id,$profile,$method)
