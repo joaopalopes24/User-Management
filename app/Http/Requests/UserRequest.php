@@ -16,8 +16,8 @@ class UserRequest extends FormRequest
     {
         return [
             'name'    => 'required',
-            'cpf'     => 'required|size:11',
-            'number'  => 'required|size:11',
+            'cpf'     => 'required|size:14',
+            'number'  => 'required|size:15',
             'email'   => 'required|email',
             'status'  => ['required',Rule::in(['$2y$10rH@g', '.fZEW.57&!'])],
             'profile' => 'required',

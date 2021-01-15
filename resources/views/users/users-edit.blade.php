@@ -24,14 +24,14 @@
                 <div class="row col-md-12">
                     <div class="col-sm-6 col-md-3 col-lg-2 form-group">
                         <label for="cpf">CPF</label>
-                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" value="{{$users->first()->cpf}}" data-mask="000.000.000-00" maxlenght="11" autocomplete="off" required>
+                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" value="{{$users->first()->cpf}}" data-mask="000.000.000-00" autocomplete="off" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-2 col-lg-2 form-group">
                         <label for="number">Telefone</label>
-                        <input type="text" class="form-control" name="number" id="number" placeholder="(XX) XXXXX-XXXX" value="{{$users->first()->number}}" data-mask="(00) 00000-0000" maxlenght="11" autocomplete="off" required>
+                        <input type="text" class="form-control" name="number" id="number" placeholder="(XX) XXXXX-XXXX" value="{{$users->first()->number}}" data-mask="(00) 00000-0000" autocomplete="off" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>

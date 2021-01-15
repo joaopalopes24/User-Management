@@ -108,7 +108,7 @@ return [
     'size'                 => [
         'numeric' => 'Ops, ":attribute" precisa ser :size.',
         'file'    => 'Ops, ":attribute" precisa ter :size kilobytes.',
-        'string'  => 'Ops, ":attribute" precisa ter :size caracteres.',
+        'string'  => 'Ops, ":attribute" precisa ter todos os caracteres.',
         'array'   => 'Ops, ":attribute" deve conter :size itens.',
     ],
     'starts_with'          => '":attribute" deve começar com um dos seguintes valores: :values.',
