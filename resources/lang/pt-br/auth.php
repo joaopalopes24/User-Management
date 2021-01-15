@@ -29,4 +29,12 @@ return [
     'destroy'    => ':name deletado com sucesso!',
     'permission' => 'Permissões do perfil - :name - alteradas com sucesso.',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Exception Language Lines
+    |--------------------------------------------------------------------------
+    */
+
+    'query'      => 'Erro ao cadastrar novo item no Banco de Dados. Inserção de valores DUPLICADOS ou INEXISTENTES!',
+
 ];
