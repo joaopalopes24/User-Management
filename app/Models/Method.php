@@ -28,11 +28,27 @@ class Method extends Model
         return $result;
     }
 
-    public static function available($type,$parameters)
+    public static function available($id,$class,$method,$route,$type,$parameters)
     {       
         $result = Method::doesntHave('item')
-            ->where('type',$type)
-            ->where('parameters',$parameters)
+            ->when($id, function ($query, $id) {
+                return $query->where('id', $id);
+            })
+            ->when($class, function ($query, $class) {
+                return $query->where('class', $class);
+            })
+            ->when($method, function ($query, $method) {
+                return $query->where('method', $method);
+            })
+            ->when($route, function ($query, $route) {
+                return $query->where('route', $route);
+            })
+            ->when($type, function ($query, $type) {
+                return $query->where('type', $type);
+            })
+            ->when($parameters, function ($query, $parameters) {
+                return $query->where('parameters', $parameters);
+            })
             ->get();
 
         return $result;
