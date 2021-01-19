@@ -14,8 +14,15 @@ class Authorization
     public function handle(Request $request, Closure $next)
     { 
         $route = FacadesRoute::currentRouteName();
+        $type = $request->method();
 
-        $route_exist = Method::read(NULL,NULL,NULL,$route);
+        if($request->route()->parameters == []){
+            $parameters = '.fZEW.57&!';
+        } else {
+            $parameters = '$2y$10rH@g';
+        }
+
+        $route_exist = Method::read(NULL,NULL,NULL,$route,NULL,NULL);
 
         if($route_exist == '[]'){
 
@@ -25,7 +32,7 @@ class Authorization
 
             list($controller, $action) = explode('Controller@', $controller_action);
 
-            Method::create($controller,$action,$route);
+            Method::create($controller,$action,$route,$type,$parameters);
 
             return redirect()->route('home.access_denied');
         }

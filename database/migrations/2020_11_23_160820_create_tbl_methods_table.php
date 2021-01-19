@@ -13,6 +13,8 @@ class CreateTblMethodsTable extends Migration
             $table->string('class',45);
             $table->string('method',45);
             $table->string('route',45);
+            $table->string('type',10);
+            $table->string('parameters',10);
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
         });

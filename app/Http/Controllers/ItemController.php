@@ -22,7 +22,7 @@ class ItemController extends Controller
     {
         $dados = [
             'menu' => Menu::read($menu,NULL,NULL),
-            'methods' => Method::doesntHave('item')->get(),
+            'methods' => Method::available('GET','.fZEW.57&!'),
         ];
 
         return view('items.items-create',$dados);
@@ -51,7 +51,7 @@ class ItemController extends Controller
         $dados = [
             'items' => Item::read($id,NULL,NULL,NULL,NULL),
             'menus' => Menu::read(NULL,NULL,NULL),
-            'methods' => Method::doesntHave('item')->get(),
+            'methods' => Method::available('GET','.fZEW.57&!'),
         ];
 
         return view('items.items-edit',$dados);

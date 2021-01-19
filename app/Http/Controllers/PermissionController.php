@@ -14,7 +14,7 @@ class PermissionController extends Controller
         $dados = [
             'profiles' => Profile::read($id,NULL,NULL),
             'classes' => Method::class(),
-            'methods' => Method::read(NULL,NULL,NULL,NULL),
+            'methods' => Method::read(NULL,NULL,NULL,NULL,NULL,NULL),
         ];
 
         return view('permissions.permissions-index',$dados);

@@ -28,7 +28,17 @@ class Method extends Model
         return $result;
     }
 
-    public static function read($id,$class,$method,$route)
+    public static function available($type,$parameters)
+    {       
+        $result = Method::doesntHave('item')
+            ->where('type',$type)
+            ->where('parameters',$parameters)
+            ->get();
+
+        return $result;
+    }
+
+    public static function read($id,$class,$method,$route,$type,$parameters)
     {       
         $result = Method::select()
             ->when($id, function ($query, $id) {
@@ -43,18 +53,26 @@ class Method extends Model
             ->when($route, function ($query, $route) {
                 return $query->where('route', $route);
             })
+            ->when($type, function ($query, $type) {
+                return $query->where('type', $type);
+            })
+            ->when($parameters, function ($query, $parameters) {
+                return $query->where('parameters', $parameters);
+            })
             ->get();
 
         return $result;
     }
 
-    public static function create($controller,$action,$route)
+    public static function create($controller,$action,$route,$type,$parameters)
     {       
         $value = new Method;
 
         $value->class = $controller;
         $value->method = $action;
         $value->route = $route;
+        $value->type = $type;
+        $value->parameters = $parameters;
 
         return $value->save();
     }
