@@ -20,13 +20,15 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->renderable(function (QueryException $e, $request) {
-            //return redirect()->back()->withErrors(trans('auth.query'));
             //Pegar o Código do Erro dd($e->getCode());
             //Pegar as Informações do Erro dd($e->errorInfo);
-            //dd($e->errorInfo);
+            if($e->getCode() == 23000){
+                return redirect()->back()->withErrors(trans('auth.query'));
+            }
         });
 
         $this->renderable(function (Throwable $e) {
+            //dd($e->getCode());
             //return view('errors.500');
         });
     } 
