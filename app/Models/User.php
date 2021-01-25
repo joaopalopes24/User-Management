@@ -42,7 +42,7 @@ class User extends Authenticatable
         $this->notify(new PasswordReset($url));
     }
 
-    public static function read($id,$name,$email,$number,$cpf,$status,$tbl_profiles_id)
+    public static function read($id,$name,$email,$number,$cpf,$birth,$status,$tbl_profiles_id)
     {       
         $result = User::select()
             ->when($id, function ($query, $id) {
@@ -59,6 +59,9 @@ class User extends Authenticatable
             })
             ->when($cpf, function ($query, $cpf) {
                 return $query->where('cpf', $cpf);
+            })
+            ->when($birth, function ($query, $birth) {
+                return $query->where('birth', $birth);
             })
             ->when($status, function ($query, $status) {
                 return $query->where('status', $status);
@@ -77,6 +80,7 @@ class User extends Authenticatable
 
         $value->name = $dados['name'];
         $value->cpf = $dados['cpf'];
+        $value->birth = $dados['birth'];
         $value->number = $dados['number'];
         $value->email = $dados['email'];
         $value->password = Hash::make('nova@123*');
@@ -92,6 +96,7 @@ class User extends Authenticatable
 
         $value->name = $dados['name'];
         $value->cpf = $dados['cpf'];
+        $value->birth = $dados['birth'];
         $value->number = $dados['number'];
         $value->email = $dados['email'];
         $value->status = $dados['status'];

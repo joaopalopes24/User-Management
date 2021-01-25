@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $dados = [
-            'users' => User::read(NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+            'users' => User::read(NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
         ];
         
         return view('users.users-index',$dados);
@@ -38,7 +38,7 @@ class UserController extends Controller
     public function show($id)
     {
         $dados = [
-            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
+            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
         ];
 
         return view('users.users-show',$dados);
@@ -47,7 +47,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $dados = [
-            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL),
+            'users' => User::read($id,NULL,NULL,NULL,NULL,NULL,NULL,NULL),
             'profiles' => Profile::read(NULL,NULL,NULL),
         ];
 

@@ -35,6 +35,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'query'      => 'Erro ao cadastrar novo item no Banco de Dados. Inserção de valores DUPLICADOS ou INEXISTENTES!',
+    'query1'      => 'Erro ao cadastrar/atualizar novo item no Banco de Dados. Inserção de valores DUPLICADOS ou INEXISTENTES!',
+    'query2'      => 'Erro ao cadastrar/atualizar novo item no Banco de Dados. Variáveis INEXISTENTES ou não COMPATÍVEIS!',
 
 ];

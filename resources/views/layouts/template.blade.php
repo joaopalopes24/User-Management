@@ -38,7 +38,7 @@
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
         <header class="main-header">
-            <a href="#" class="logo">
+            <a href="{{route('home.index')}}" class="logo">
                 <span class="logo-mini"><b>JP</b></span>
                 <span class="logo-lg"><b>João Pedro Lopes</b></span>
             </a>

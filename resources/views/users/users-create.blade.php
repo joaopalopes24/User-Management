@@ -21,9 +21,18 @@
                     </div>
                 </div>
                 <div class="row col-md-12">
-                    <div class="col-sm-6 col-md-3 col-lg-2 form-group">
+                    <div class="col-sm-12 col-md-5 col-lg-4 form-group">
                         <label for="cpf">CPF</label>
                         <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" value="" data-mask="000.000.000-00" autocomplete="off" required>
+                        <div class="invalid-feedback">
+                            Campo Obrigatório
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-3 col-lg-2 form-group">
+                        <label for="birth">Data de Nascimento</label>
+                        <input type="text" class="form-control" name="birth" id="birth" placeholder="Data de Nascimento" value="" data-mask="00/00/0000" autocomplete="off" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>

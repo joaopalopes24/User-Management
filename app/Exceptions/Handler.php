@@ -23,7 +23,11 @@ class Handler extends ExceptionHandler
             //Pegar o Código do Erro dd($e->getCode());
             //Pegar as Informações do Erro dd($e->errorInfo);
             if($e->getCode() == 23000){
-                return redirect()->back()->withErrors(trans('auth.query'));
+                return redirect()->back()->withErrors(trans('auth.query1'));
+            }
+
+            if($e->getCode() == '42S22'){
+                return redirect()->back()->withErrors(trans('auth.query2'));
             }
         });
 

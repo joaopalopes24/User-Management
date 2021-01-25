@@ -18,6 +18,7 @@
                             <th>Nome do Usuário</th>
                             <th>E-mail</th>
                             <th>CPF</th>
+                            <th>Data de Nascimento</th>
                             <th>Perfil</th>
                             <th>Status</th>
                             <th>Ações</th>
@@ -30,6 +31,7 @@
                                 <td>{{$var1->name}}</td>
                                 <td>{{$var1->email}}</td>
                                 <td>{{$var1->cpf}}</td>
+                                <td>{{$var1->birth}}</td>
                                 @if($var1->tbl_profiles_id != NULL)
                                     <td>{{$var1->profile->name}}</td>
                                 @else

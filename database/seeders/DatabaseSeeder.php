@@ -231,6 +231,7 @@ class DatabaseSeeder extends Seeder
             'number' => '(38) 99144-6655',
             'password' => '$2y$10$Gc77rU95SOcyP2bYALMiB.ZqygNwJFDpx83CMFAyKI.ZRZuxtCWg2',
             'cpf' => '072.778.466-80',
+            'birth' => '24/12/1997',
             'status' => '$2y$10rH@g',
             'tbl_profiles_id' => '1',
         ]);

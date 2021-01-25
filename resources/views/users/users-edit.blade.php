@@ -15,7 +15,16 @@
                 <div class="row col-md-12">
                     <div class="col-sm-12 col-md-5 col-lg-4 form-group">
                         <label for="name">Nome</label>
-                    <input type="text" class="form-control" name="name" id="name" placeholder="Nome do Cliente" value="{{$users->first()->name}}" required>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Nome do Cliente" value="{{$users->first()->name}}" required>
+                        <div class="invalid-feedback">
+                            Campo Obrigatório
+                        </div>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-12 col-md-5 col-lg-4 form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" value="{{$users->first()->cpf}}" data-mask="000.000.000-00" autocomplete="off" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>
@@ -23,8 +32,8 @@
                 </div>
                 <div class="row col-md-12">
                     <div class="col-sm-6 col-md-3 col-lg-2 form-group">
-                        <label for="cpf">CPF</label>
-                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF" value="{{$users->first()->cpf}}" data-mask="000.000.000-00" autocomplete="off" required>
+                        <label for="birth">Data de Nascimento</label>
+                        <input type="text" class="form-control" name="birth" id="birth" placeholder="CPF" value="{{$users->first()->birth}}" data-mask="00/00/0000" autocomplete="off" required>
                         <div class="invalid-feedback">
                             Campo Obrigatório
                         </div>

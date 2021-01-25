@@ -16,9 +16,15 @@
                     </div>
                 </div>
                 <div class="row col-md-12">
-                    <div class="col-sm-6 col-md-3 col-lg-2 form-group">
+                    <div class="col-sm-12 col-md-5 col-lg-4 form-group">
                         <label>CPF</label>
-                        <input class="form-control" value="{{$users->first()->cpf}}" disabled>
+                    <input class="form-control" value="{{$users->first()->cpf}}" disabled>
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="col-sm-6 col-md-3 col-lg-2 form-group">
+                        <label>Data de Nascimento</label>
+                        <input class="form-control" value="{{$users->first()->birth}}" disabled>
                     </div>
                     <div class="col-sm-6 col-md-2 col-lg-2 form-group">
                         <label>Telefone</label>

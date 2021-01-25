@@ -12,9 +12,10 @@ class CreateTblUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('number',45);
+            $table->string('number',15);
             $table->string('password');
-            $table->string('cpf',45)->unique();
+            $table->string('cpf',14)->unique();
+            $table->string('birth',10);
             $table->string('status',10);
             $table->dateTime('created_at')->useCurrent();
             $table->timestamp('updated_at');
